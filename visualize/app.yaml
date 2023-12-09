@@ -1,0 +1,7 @@
+runtime: python310
+env: standard
+handlers:
+- url: /.*
+  script: main.py
+
+
