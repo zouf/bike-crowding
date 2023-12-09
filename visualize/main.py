@@ -1,15 +1,24 @@
 from flask import Flask, render_template, send_file,  send_from_directory
-
+import numpy as np
+import pandas as pd
 from google.cloud import storage
 import datetime
 import dateutil.parser
 import json
+from statistics import mean
 
 app = Flask(__name__)
 
 # Replace these values with your own
 BUCKET_NAME = "bike-crowding"
 DATA_FILE_NAME = "logs/central_park.csv"
+
+
+def _rolling_average(data):
+    print(vals)
+    return mean(vals)
+
+
 
 @app.route("/")
 def plot_data():
@@ -21,28 +30,15 @@ def plot_data():
         blob.download_to_file(f)
 
     # Read and process data
-    bike_data = []
-    with open("/tmp/data.csv", "r") as f:
-        lines = f.readlines()
-        for line in lines[-10000:]:
-            # Split line by comma
-            values = line.split(",")
-            # Parse timestamp
-            timestamp = dateutil.parser.parse(values[0]).isoformat()
-            # Get raw count
-            raw_count = float(values[1])
+    LIMIT=20000
+    df = pd.read_csv('/tmp/data.csv', names=['timestamp','raw_count', 'location'])[['timestamp','raw_count']][-LIMIT:]
+    df = df.assign(timestamp=pd.to_datetime(df['timestamp']), raw_count=pd.to_numeric(df['raw_count']))
+    df  =df.set_index('timestamp')
 
-            # Append data to list
-            bike_data.append({
-                "datetime": timestamp,
-                "raw_count": raw_count,
-            })
-
-    # Convert data to D3 format
-    # d3_data = json.dumps(bike_data)
-    print(bike_data[0])
-    # Render template with D3 data
-    return render_template("index.html", data=bike_data)
+    dfs = df.resample("15min").mean().reset_index()
+    dfs['timestamp'] = dfs.timestamp.map(lambda x: x.isoformat())
+    data = dfs[['timestamp','raw_count']].to_dict('records')
+    return render_template("index.html", data=data)
 
 @app.route("/bike.js")
 def serve_bike_js():

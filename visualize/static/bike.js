@@ -1,6 +1,36 @@
 const ctx = document.getElementById('timeSeriesChart').getContext('2d');
-const labels = bikeData.map(d => moment(new Date(d.datetime)).format('MMM DD'));
+
+// Define a function to format datetime with ET
+function formatDateTime(datetimeStr) {
+  const dateObj = new Date(datetimeStr);
+  dateObj.setTime(dateObj.getTime() - dateObj.getTimezoneOffset() * 60 * 1000); // Convert from UTC to local time
+
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone: "America/New_York", // Set time zone to ET
+  };
+  return new Intl.DateTimeFormat("en-US", options).format(dateObj);
+}
+
+// Use the formatDateTime function to format labels
+const labels = bikeData.map(d => formatDateTime(d.timestamp));
 const dataPoints = bikeData.map(d => d.raw_count);
+
+const maxValue = Math.max(...dataPoints);
+const minValue = Math.min(...dataPoints);
+
+// Define a color mapping function based on values
+function getColor(value) {
+  const normalizedValue = (value - minValue) / (maxValue - minValue);
+  const green = Math.round(255 * normalizedValue);
+  const red = Math.round(255 * (1 - normalizedValue));
+  return `rgba(${red}, ${green}, 0, 0.5)`;
+}
 
 const chart = new Chart(ctx, {
   type: 'line',
@@ -9,18 +39,25 @@ const chart = new Chart(ctx, {
     datasets: [{
       label: 'Raw Count',
       data: dataPoints,
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: dataPoints.map(getColor), // Use custom color mapping function
+      borderColor: 'rgba(0, 0, 0, 0.7)',
       borderWidth: 1
     }]
   },
   options: {
-    responsive: true,
+    responsive: true, // Disable responsiveness for maximizing size
+    width: window.innerWidth, // Set width to full window width
+    height: window.innerHeight * 0.8, // Set height to 80% of window height
     scales: {
       xAxes: [{
         type: 'time',
         time: {
-          unit: 'day'
+          unit: 'day', // Optional: adjust unit based on desired granularity
+          displayFormats: { // Customize date format for different scale units
+            hour: 'MMM DD h:mm A', // Show date, hour, and minute with AM/PM
+            day: 'MMM DD', // Show only date for days
+            month: 'MMM YYYY', // Show month and year for months
+          }
         }
       }],
       yAxes: [{
