@@ -1,4 +1,6 @@
-pandas==1.5.3
-Flask==1.1.1
-gunicorn==20.0.4
-
+pandas
+Flask
+gunicorn
+google-cloud
+google-cloud-core
+google-cloud-storage
