@@ -28,19 +28,13 @@ def plot_data():
     df = df.assign(timestamp=pd.to_datetime(df['timestamp']), raw_count=pd.to_numeric(df['raw_count']))
     df  =df.set_index('timestamp')
     avg_count = df['raw_count'].median()
-    max_count = df['raw_count'].max()
-    peak_time_utc = df[df['raw_count'] == max_count].index.values[0].replace(tzinfo=datetime.timezone.utc)
-    et_timezone = timezone(datetime.timedelta(hours=-4), 'America/New_York')
-
-
-    peak_time_et = peak_time_utc.astimezone(et_timezone)
-
-    
-
     dfs = df.resample("15min").mean().reset_index()
+    max_count = dfs['raw_count'].max()
+
+    peak_time_utc = pd.to_datetime(dfs[dfs['raw_count'] == max_count].timestamp.values[0], utc=True).tz_convert('US/Eastern')
     dfs['timestamp'] = dfs.timestamp.map(lambda x: x.isoformat())
     data = dfs[['timestamp','raw_count']].to_dict('records')
-    return render_template("index.html", data=data, peak_time=peak_time_et, max_count=max_count, avg_count=avg_count)
+    return render_template("index.html", data=data, peak_time=peak_time_utc, max_count=max_count, avg_count=avg_count)
 
 @app.route("/bike.js")
 def serve_bike_js():
