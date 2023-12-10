@@ -37,17 +37,39 @@ const chart = new Chart(ctx, {
   data: {
     labels: labels,
     datasets: [{
-      label: 'Raw Count',
+      label: 'Entity Count',
       data: dataPoints,
       backgroundColor: dataPoints.map(getColor), // Use custom color mapping function
       borderColor: 'rgba(0, 0, 0, 0.7)',
-      borderWidth: 1
+      borderWidth: 1,
+      fill: false,
+      cubicInterpolationMode: 'monotone',
+      pointStyle: 'dash',
+      tension: 0.4
+
     }]
   },
   options: {
     responsive: true, // Disable responsiveness for maximizing size
+
+    plugins: {
+      title: {
+        display: true,
+        text: 'Count of People in Central Park'
+      },
+    },
     width: window.innerWidth, // Set width to full window width
     height: window.innerHeight * 0.8, // Set height to 80% of window height
+    tooltips: {
+      enabled: true,
+      mode: 'point',
+      callbacks: {
+        label: function(tooltipItem) {
+          // Format the tooltip label with additional information
+          return `Time: ${tooltipItem.xLabel}, Count: ${tooltipItem.yLabel}`;
+        }
+      }
+    },
     scales: {
       xAxes: [{
         type: 'time',

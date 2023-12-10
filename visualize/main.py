@@ -22,20 +22,20 @@ def plot_data():
     with open("/tmp/data.csv", "wb") as f:
         blob.download_to_file(f)
 
-    # Read and process data
-    LIMIT=20000
-    df = pd.read_csv('/tmp/data.csv', names=['timestamp','raw_count', 'location'])[['timestamp','raw_count']][-LIMIT:]
+    df = pd.read_csv('/tmp/data.csv', names=['timestamp','raw_count', 'location'])[['timestamp','raw_count']]
     df = df.assign(timestamp=pd.to_datetime(df['timestamp']), raw_count=pd.to_numeric(df['raw_count']))
     df  =df.set_index('timestamp')
-    avg_count = df['raw_count'].median()
-    dfs = df.resample("15min").mean().reset_index()
-    max_count = dfs['raw_count'].max()
-    latest_count = dfs['raw_count'].values[-1]
-
+    avg_count = np.round(df['raw_count'].median())
+    dfs = df.resample("60min").mean().reset_index()
+    max_count = dfs['raw_count'].fillna(0).max()
     peak_time_utc = pd.to_datetime(dfs[dfs['raw_count'] == max_count].timestamp.values[0], utc=True).tz_convert('US/Eastern')
+
+    latest_count = np.round(dfs['raw_count'].values[-1])
+
     dfs['timestamp'] = dfs.timestamp.map(lambda x: x.isoformat())
-    data = dfs[['timestamp','raw_count']].to_dict('records')
-    return render_template("index.html", data=data, peak_time=peak_time_utc, max_count=max_count, avg_count=avg_count, latest_count=latest_count)
+    LIMIT=100
+    data = dfs[['timestamp','raw_count']].to_dict('records')[-LIMIT:]
+    return render_template("index.html", data=data, peak_time=peak_time_utc, max_count=np.round(max_count), avg_count=avg_count, latest_count=latest_count)
 
 @app.route("/bike.js")
 def serve_bike_js():
