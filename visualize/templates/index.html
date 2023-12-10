@@ -38,6 +38,28 @@
                 <p class="lead">This page visualizes the number of bikes counted in Central Park throughout the day. The data is updated regularly and provides insights into cyclist activity and park usage.</p>
             </div>
         </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <form action="/" method="get">
+                    <label for="window_size">Window Size (days):</label>
+                    <input type="number" id="window_size" name="window_size" value="{{ window_size }}">
+                </div>
+            <div class="col-md-6">
+                <label for="smoothing_minutes">Smoothing (minutes):</label>
+                <select id="smoothing_minutes" name="smoothing_minutes">
+                    <option value="15">15 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="60" selected>60 minutes</option>
+                    <option value="120">120 minutes</option>
+                    <option value="240">240 minutes</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Update Visualization</button>
+                </form>
+            </div>
+        </div>
+
+
         <div class="row mt-3">
             <div class="col-md-12">
                 <table class="table table-bordered table-striped">
@@ -73,16 +95,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="timeSeriesChart">
-                            <figcaption>Visualization of bike counts over the past 2 days. Hover over a point for more information.</figcaption>
-
-                        </canvas>
+                        <canvas id="timeSeriesChart"></canvas>
+                        <figcaption>Visualization of bike counts over the past 2 days. Hover over a point for more information.</figcaption>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 

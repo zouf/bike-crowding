@@ -29,8 +29,21 @@ function getColor(value) {
   const normalizedValue = (value - minValue) / (maxValue - minValue);
   const green = Math.round(255 * normalizedValue);
   const red = Math.round(255 * (1 - normalizedValue));
-  return `rgba(${red}, ${green}, 0, 0.5)`;
+  return `rgba( ${green},${red}, 0, 0.5)`;
 }
+
+// Register Luxon as the date adapter
+Chart.register({
+  id: 'luxon',
+  beforeInit: function(chart) {
+    const { options } = chart;
+    if (options.scales.x.type === 'time' && options.scales.x.time && options.scales.x.time.parser) {
+      options.scales.x.time.parser = function(value) {
+        return DateTime.fromISO(value, { zone: 'utc' });
+      };
+    }
+  }
+});
 
 const chart = new Chart(ctx, {
   type: 'line',
@@ -44,7 +57,7 @@ const chart = new Chart(ctx, {
       borderWidth: 1,
       fill: false,
       cubicInterpolationMode: 'monotone',
-      pointStyle: 'dash',
+      pointStyle: 'point',
       tension: 0.4
 
     }]
@@ -58,6 +71,7 @@ const chart = new Chart(ctx, {
         text: 'Count of People in Central Park'
       },
     },
+
     width: window.innerWidth, // Set width to full window width
     height: window.innerHeight * 0.8, // Set height to 80% of window height
     tooltips: {
@@ -70,24 +84,7 @@ const chart = new Chart(ctx, {
         }
       }
     },
-    scales: {
-      xAxes: [{
-        type: 'time',
-        time: {
-          unit: 'day', // Optional: adjust unit based on desired granularity
-          displayFormats: { // Customize date format for different scale units
-            hour: 'MMM DD h:mm A', // Show date, hour, and minute with AM/PM
-            day: 'MMM DD', // Show only date for days
-            month: 'MMM YYYY', // Show month and year for months
-          }
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    },
+    
     legend: {
       display: false
     },
