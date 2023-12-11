@@ -73,7 +73,8 @@ def plot_data():
     dfs['raw_count'] = np.round(dfs['raw_count'])
     
     def fix_location(x):
-
+        if not x:
+            return ''
         rval = request.base_url+'raw'+x.split('raw')[1]
         return rval
 
