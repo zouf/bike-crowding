@@ -39,25 +39,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <form action="/" method="get">
-                    <label for="window_size">Window Size (days):</label>
-                    <input type="number" id="window_size" name="window_size" value="{{ window_size }}">
-                </div>
-            <div class="col-md-6">
-                <label for="smoothing_minutes">Smoothing (minutes):</label>
-                <select id="smoothing_minutes" name="smoothing_minutes">
-                    <option value="15">15 minutes</option>
-                    <option value="30">30 minutes</option>
-                    <option value="60" selected>60 minutes</option>
-                    <option value="120">120 minutes</option>
-                    <option value="240">240 minutes</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Update Visualization</button>
-                </form>
-            </div>
-        </div>
+       
 
 
         <div class="row mt-3">
@@ -70,6 +52,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Smoothing</td>
+                            <td>{{smoothing_minutes}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date Range</td>
+                            <td>{{date_range_min}} - {{date_range_max}}</td>
+                        </tr>
                         <tr>
                             <td>Current Count</td>
                             <td>{{latest_count}}</td>
@@ -89,22 +79,42 @@
                     </tbody>
                 </table>
             </div>
+            
         </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <form action="/" method="get">
+                    <label for="window_size">Window Size (days):</label>
+                    <input type="number" id="window_size" name="window_size" value="{{ window_size }}">
+                </div>
+            <div class="col-md-6">
+                <label for="smoothing_minutes">Smoothing (minutes):</label>
+                <input type="number" id="window_size" name="window_size" value="{{ window_size }}">
+                <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
 
+        </div>
+        
         <div class="row mt-5">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="timeSeriesChart"></canvas>
-                        <figcaption>Visualization of bike counts over the past 2 days. Hover over a point for more information.</figcaption>
+                        <div id="timeSeriesChart"></div>
+                        <figcaption>Hover over a point for more information.</figcaption>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <!-- 'img-div' div with the image inside -->
+            <div id="img-div">
+                <img src="{{img_url}}" alt="Snapshot">
+            </div>
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 
 </body>
