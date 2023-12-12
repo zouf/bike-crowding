@@ -56,7 +56,7 @@ def plot_data():
         blob.download_to_file(f)
 
     df = pd.read_csv('/tmp/data.csv', names=['timestamp','raw_count', 'location'])
-    df = df.assign(timestamp=pd.to_datetime(df['timestamp']), raw_count=pd.to_numeric(df['raw_count']))
+    df = df.assign(timestamp=pd.to_datetime(df['timestamp'], format='mixed', errors='coerce'), raw_count=pd.to_numeric(df['raw_count']))
     
     df = df[df['timestamp'] > min_day]
     df = df.set_index('timestamp')
@@ -65,7 +65,7 @@ def plot_data():
     dfs = df.resample(f"{smoothing_minutes}min").agg({'raw_count': np.mean, 'location': 'last'}).reset_index()
     max_count = dfs["raw_count"].fillna(0).max()
     peak_time_utc = pd.to_datetime(
-        dfs[dfs["raw_count"] == max_count].timestamp.values[0], utc=True, errors='coerce'
+        dfs[dfs["raw_count"] == max_count].timestamp.values[0], utc=True, errors='coerce', format='mixed'
     ).tz_convert("US/Eastern")
     
     latest_count = np.round(dfs["raw_count"].values[-1])
