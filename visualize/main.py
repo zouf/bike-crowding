@@ -56,14 +56,25 @@ def plot_data():
         blob.download_to_file(f)
 
     df = pd.read_csv('/tmp/data.csv', names=['timestamp','raw_count', 'location'])
-    df = df.assign(timestamp=pd.to_datetime(df['timestamp'], format='mixed', errors='coerce'), raw_count=pd.to_numeric(df['raw_count']))
-    
+
+    df = df.assign(timestamp=pd.to_datetime(df['timestamp'], format='%Y-%m-%dT%H:%M:%S.%f'), raw_count=pd.to_numeric(df['raw_count']))
     df = df[df['timestamp'] > min_day]
     df = df.set_index('timestamp')
     avg_count = np.round(df['raw_count'].median())
 
     dfs = df.resample(f"{smoothing_minutes}min").agg({'raw_count': np.mean, 'location': 'last'}).reset_index()
     max_count = dfs["raw_count"].fillna(0).max()
+
+    def fix_location(x):
+        if not x:
+            return ''
+        rval = request.base_url+'raw'+x.split('raw')[1]
+        if not ('127' in request.base_url or '192' in request.base_url):
+            rval = rval.replace('http:','https:')
+        return rval
+    dfs['location'] = dfs['location'].map(fix_location)
+
+    
     peak_time_utc = pd.to_datetime(
         dfs[dfs["raw_count"] == max_count].timestamp.values[0], utc=True, errors='coerce', format='mixed'
     ).tz_convert("US/Eastern")
@@ -71,18 +82,12 @@ def plot_data():
     latest_count = np.round(dfs["raw_count"].values[-1])
     dfs["timestamp"] = dfs.timestamp.map(lambda x: x.isoformat())
     dfs['raw_count'] = np.round(dfs['raw_count'])
-    
-    def fix_location(x):
-        if not x:
-            return ''
-        rval = request.base_url+'raw'+x.split('raw')[1]
-        return rval
+    img_url = dfs['location'].values[-1]
 
 
-    dfs['location'] = dfs['location'].map(fix_location)
+
     data = dfs[["timestamp", "raw_count", "location"]].to_dict("records")
 
-    img_url = dfs['location'].values[-1]
 
     return render_template(
         "index.html",
