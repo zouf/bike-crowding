@@ -65,7 +65,7 @@ def plot_data():
     dfs = df.resample(f"{smoothing_minutes}min").agg({'raw_count': np.mean, 'location': 'last'}).reset_index()
     max_count = dfs["raw_count"].fillna(0).max()
     peak_time_utc = pd.to_datetime(
-        dfs[dfs["raw_count"] == max_count].timestamp.values[0], utc=True
+        dfs[dfs["raw_count"] == max_count].timestamp.values[0], utc=True, errors='coerce'
     ).tz_convert("US/Eastern")
     
     latest_count = np.round(dfs["raw_count"].values[-1])
