@@ -54,20 +54,13 @@ def plot_data():
         blob.download_to_file(f)
 
     df = pd.read_csv("/tmp/data.csv", names=["timestamp", "raw_count", "location"])
-
-    try:
-        print('in before block!')
-        print(df.head())
-        df = df.assign(
-            timestamp=pd.to_datetime(df["timestamp"], format="%Y-%m-%dT%H:%M:%S.%f"),
-            raw_count=pd.to_numeric(df["raw_count"]),
-        )
-    except:
-	    print('in exception block!')
-        df = df.assign(
-            timestamp=pd.to_datetime(df["timestamp"], format="%Y-%m-%dT%H:%M:%S"),
-            raw_count=pd.to_numeric(df["raw_count"]),
-        )
+    #remove ms. to_datetime does not have a good time with this
+    df['timestamp'] = df['timestamp'].apply(lambda x: x.split('.')[0])
+    print(df.head())
+    df = df.assign(
+        timestamp=pd.to_datetime(df["timestamp"], format="%Y-%m-%dT%H:%M:%S"),
+        raw_count=pd.to_numeric(df["raw_count"]),
+    )
 
     df = df[df["timestamp"] > min_day]
     df = df.set_index("timestamp")
