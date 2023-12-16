@@ -1,16 +1,15 @@
-from wsgiref.util import request_uri
 from flask import Flask, render_template, send_file, send_from_directory, request, abort
 import numpy as np
 import pandas as pd
 from google.cloud import storage
 import datetime as dt
-import json
 
 app = Flask(__name__)
 
 # Replace these values with your own
 BUCKET_NAME = "bike-crowding"
 DATA_FILE_NAME = "logs/central_park.csv"
+
 
 @app.route("/raw/<path:path>")
 def serve_raw_file(path):
@@ -36,7 +35,6 @@ def plot_data():
     except (TypeError, ValueError):
         window_size = 2  # Default window size
 
-
     try:
         smoothing_minutes = int(request.args.get("smoothing_minutes"))
     except (TypeError, ValueError):
@@ -45,8 +43,7 @@ def plot_data():
     window_size = max(window_size, 2)
     date_range_max = dt.datetime.now().strftime('%Y%m%d')
     min_day = dt.datetime.today() - dt.timedelta(days=window_size)
-    date_range_min=min_day.strftime('%Y%m%d')
-
+    date_range_min = min_day.strftime('%Y%m%d')
 
     # Download data from GCS
     storage_client = storage.Client()
@@ -55,9 +52,13 @@ def plot_data():
     with open("/tmp/data.csv", "wb") as f:
         blob.download_to_file(f)
 
-    df = pd.read_csv('/tmp/data.csv', names=['timestamp','raw_count', 'location'])
+    df = pd.read_csv('/tmp/data.csv', names=['timestamp', 'raw_count', 'location'])
 
-    df = df.assign(timestamp=pd.to_datetime(df['timestamp'], format='%Y-%m-%dT%H:%M:%S.%f'), raw_count=pd.to_numeric(df['raw_count']))
+    try:
+        df = df.assign(timestamp=pd.to_datetime(df['timestamp'], format='%Y-%m-%dT%H:%M:%S.%f'), raw_count=pd.to_numeric(df['raw_count']))
+    except ValueError:
+        df = df.assign(timestamp=pd.to_datetime(df['timestamp'], format='%Y-%m-%dT%H:%M:%S'), raw_count=pd.to_numeric(df['raw_count']))
+
     df = df[df['timestamp'] > min_day]
     df = df.set_index('timestamp')
     avg_count = np.round(df['raw_count'].median())
@@ -70,25 +71,17 @@ def plot_data():
             return ''
         rval = request.base_url+'raw'+x.split('raw')[1]
         if not ('127' in request.base_url or '192' in request.base_url):
-            rval = rval.replace('http:','https:')
+            rval = rval.replace('http:', 'https:')
         return rval
     dfs['location'] = dfs['location'].map(fix_location)
-
-    
     peak_time_utc = pd.to_datetime(
         dfs[dfs["raw_count"] == max_count].timestamp.values[0], utc=True, errors='coerce', format='mixed'
     ).tz_convert("US/Eastern")
-    
     latest_count = np.round(dfs["raw_count"].values[-1])
     dfs["timestamp"] = dfs.timestamp.map(lambda x: x.isoformat())
     dfs['raw_count'] = np.round(dfs['raw_count'])
     img_url = dfs['location'].values[-1]
-
-
-
     data = dfs[["timestamp", "raw_count", "location"]].to_dict("records")
-
-
     return render_template(
         "index.html",
         data=data,
@@ -104,9 +97,11 @@ def plot_data():
 
     )
 
+
 @app.route("/bike.js")
 def serve_bike_js():
     return send_from_directory("static", "bike.js")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
