@@ -7,9 +7,12 @@ import time
 import json
 
 
-URL='https://webcams.nyctmc.org/api/cameras/3f04a686-f97c-4187-8968-cb09265e08ff/image'
-PROJECT_ID = 'zouf-dev'
-BUCKET_NAME = 'bike-crowding'
+URL = (
+    "https://webcams.nyctmc.org/api/cameras/3f04a686-f97c-4187-8968-cb09265e08ff/image"
+)
+PROJECT_ID = "zouf-dev"
+BUCKET_NAME = "bike-crowding"
+
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     storage_client = storage.Client(project=PROJECT_ID)
@@ -20,21 +23,21 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 
 def get_and_record_image(now: dt.datetime, url: str) -> str:
     response = requests.get(url)
-    nowstr = now.strftime('%Y%m%dT%H%M%S')
+    nowstr = now.strftime("%Y%m%dT%H%M%S")
     response.raise_for_status()
-    path=f'raw/image.{nowstr}.jpg'
-    with open(path,'wb') as fp:
+    path = f"raw/image.{nowstr}.jpg"
+    with open(path, "wb") as fp:
         fp.write(response.content)
-    p=upload_blob(BUCKET_NAME, path, path)
+    p = upload_blob(BUCKET_NAME, path, path)
     return path
 
 
 def main():
     i = 0
-    with open('log.csv', 'a+') as fplog:
+    with open("log.csv", "a+") as fplog:
         while True:
-            now=dt.datetime.utcnow()
-            path=get_and_record_image(now, URL)
+            now = dt.datetime.utcnow()
+            path = get_and_record_image(now, URL)
             image = cv2.imread(path)
 
             # Convert the image to grayscale
@@ -42,20 +45,27 @@ def main():
             # Apply a blur to the image
             blurred_image = cv2.blur(grayscale_image, (5, 5))
             # Apply a threshold to the image
-            thresholded_image = cv2.threshold(blurred_image, 127, 255, cv2.THRESH_BINARY)[1]
+            thresholded_image = cv2.threshold(
+                blurred_image, 127, 255, cv2.THRESH_BINARY
+            )[1]
             # Find the contours in the image
-            contours, hierarchy = cv2.findContours(thresholded_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+            contours, hierarchy = cv2.findContours(
+                thresholded_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
+            )
             # Find the number of contours
             number_of_people = len(contours)
 
             # Print the number of people
-            data={'time': now.isoformat(), 'number_of_people': str(number_of_people), 'path_to_image': path }
+            data = {
+                "time": now.isoformat(),
+                "number_of_people": str(number_of_people),
+                "path_to_image": path,
+            }
             print(data)
-            fplog.write(','.join(list(data.values()))+'\n')
-            upload_blob(BUCKET_NAME, 'log.csv', 'logs/central_park.csv')
+            fplog.write(",".join(list(data.values())) + "\n")
+            upload_blob(BUCKET_NAME, "log.csv", "logs/central_park.csv")
             time.sleep(15)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-
