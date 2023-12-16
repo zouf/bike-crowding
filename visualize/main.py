@@ -56,11 +56,14 @@ def plot_data():
     df = pd.read_csv("/tmp/data.csv", names=["timestamp", "raw_count", "location"])
 
     try:
+	print('in before block!')
+	print(df.head())
         df = df.assign(
             timestamp=pd.to_datetime(df["timestamp"], format="%Y-%m-%dT%H:%M:%S.%f"),
             raw_count=pd.to_numeric(df["raw_count"]),
         )
-    except ValueError:
+    except:
+	print('in exception block!')
         df = df.assign(
             timestamp=pd.to_datetime(df["timestamp"], format="%Y-%m-%dT%H:%M:%S"),
             raw_count=pd.to_numeric(df["raw_count"]),
