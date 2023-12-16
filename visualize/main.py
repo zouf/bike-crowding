@@ -54,8 +54,8 @@ def plot_data():
         blob.download_to_file(f)
 
     df = pd.read_csv("/tmp/data.csv", names=["timestamp", "raw_count", "location"])
-    #remove ms. to_datetime does not have a good time with this
-    df['timestamp'] = df['timestamp'].apply(lambda x: x.split('.')[0])
+    # remove ms. to_datetime does not have a good time with this
+    df["timestamp"] = df["timestamp"].apply(lambda x: x.split(".")[0])
     print(df.head())
     df = df.assign(
         timestamp=pd.to_datetime(df["timestamp"], format="%Y-%m-%dT%H:%M:%S"),
