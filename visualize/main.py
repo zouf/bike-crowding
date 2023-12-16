@@ -1,8 +1,10 @@
-from flask import Flask, render_template, send_file, send_from_directory, request, abort
+import datetime as dt
+
 import numpy as np
 import pandas as pd
+from flask import (Flask, abort, render_template, request, send_file,
+                   send_from_directory)
 from google.cloud import storage
-import datetime as dt
 
 app = Flask(__name__)
 
