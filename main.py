@@ -1,3 +1,4 @@
+import os
 import cv2
 import datetime as dt
 from google.cloud import storage
@@ -21,17 +22,19 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 def get_and_record_image(now: dt.datetime, url: str) -> str:
     response = requests.get(url)
     nowstr = now.strftime('%Y%m%dT%H%M%S')
+    ym = now.strftime('%Y%m')
     response.raise_for_status()
-    path=f'raw/image.{nowstr}.jpg'
+    directory = f'/home/mattzouf/bike-crowding/raw/{ym}'
+    os.makedirs(directory, exist_ok=True)
+    path=f'/home/mattzouf/bike-crowding/raw/{ym}/image.{nowstr}.jpg'
     with open(path,'wb') as fp:
         fp.write(response.content)
-    p=upload_blob(BUCKET_NAME, path, path)
+    p=upload_blob(BUCKET_NAME, path, 'images/centralpark/{ym}/screenshot.{nowstr}.jpg')
     return path
-
 
 def main():
     i = 0
-    with open('log.csv', 'a+') as fplog:
+    with open('/home/mattzouf/bike-crowding/log.csv', 'a+') as fplog:
         while True:
             now=dt.datetime.utcnow()
             path=get_and_record_image(now, URL)
@@ -52,8 +55,12 @@ def main():
             data={'time': now.isoformat(), 'number_of_people': str(number_of_people), 'path_to_image': path }
             print(data)
             fplog.write(','.join(list(data.values()))+'\n')
-            upload_blob(BUCKET_NAME, 'log.csv', 'logs/central_park.csv')
+            upload_blob(BUCKET_NAME, '/home/mattzouf/bike-crowding/log.csv', 'logs/central_park.csv')
             time.sleep(15)
+            if os.path.exists(path):
+                os.remove(path)
+
+
 
 
 if __name__ == '__main__':
