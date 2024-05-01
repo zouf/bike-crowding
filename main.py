@@ -29,7 +29,7 @@ def get_and_record_image(now: dt.datetime, url: str) -> str:
     path=f'/home/mattzouf/bike-crowding/raw/{ym}/image.{nowstr}.jpg'
     with open(path,'wb') as fp:
         fp.write(response.content)
-    p=upload_blob(BUCKET_NAME, path, 'images/centralpark/{ym}/screenshot.{nowstr}.jpg')
+    p=upload_blob(BUCKET_NAME, path, f'images/centralpark/{ym}/screenshot.{nowstr}.jpg')
     return path
 
 def main():
