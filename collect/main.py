@@ -25,14 +25,16 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 def get_and_record_image(now: dt.datetime, url: str) -> str:
     response = requests.get(url)
     nowstr = now.strftime('%Y%m%dT%H%M%S')
-    ym = now.strftime('%Y%m')
     response.raise_for_status()
-    directory = f'/home/mattzouf/bike-crowding/raw/{ym}'
+    year = now.strftime('%Y')
+    month = now.strftime('%m')
+    day = now.strftime('%d')
+    directory = f'/home/mattzouf/bike-crowding/raw/{year}/{month}/{day}'
     os.makedirs(directory, exist_ok=True)
-    path=f'/home/mattzouf/bike-crowding/raw/{ym}/image.{nowstr}.jpg'
+    path=f'/home/mattzouf/bike-crowding/raw/{year}/{month}/{day}/image.{nowstr}.jpg'
     with open(path,'wb') as fp:
         fp.write(response.content)
-    p=upload_blob(BUCKET_NAME, path, f'images/centralpark/{ym}/screenshot.{nowstr}.jpg')
+    p=upload_blob(BUCKET_NAME, path, f'images/centralpark/{year}/{month}/{day}/screenshot.{nowstr}.jpg')
     return path
 
 def main():
@@ -65,13 +67,8 @@ def main():
                 "path_to_image": path,
             }
             print(data)
-<<<<<<< HEAD:main.py
             fplog.write(','.join(list(data.values()))+'\n')
             upload_blob(BUCKET_NAME, '/home/mattzouf/bike-crowding/log.csv', 'logs/central_park.csv')
-=======
-            fplog.write(",".join(list(data.values())) + "\n")
-            upload_blob(BUCKET_NAME, "log.csv", "logs/central_park.csv")
->>>>>>> 87864f764f2ce842c05e964f6b55aaff493d3d89:collect/main.py
             time.sleep(15)
             if os.path.exists(path):
                 os.remove(path)
