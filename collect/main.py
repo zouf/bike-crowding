@@ -108,6 +108,9 @@ class CameraScraper:
             return {
                 'camera_id': camera_id,
                 'camera_name': camera['name'],
+                'camera_name_safe': safe_name,
+
+                'file_path': filename,
                 'status': 'success',
                 'filename': filename,
                 'timestamp': timestamp
@@ -120,6 +123,8 @@ class CameraScraper:
                 'camera_name': camera.get('name', 'unknown'),
                 'status': 'error',
                 'error': str(e),
+                'camera_name_safe': 'unknown',
+                'file_path': '',
                 'timestamp': datetime.now(self.ny_tz).strftime('%Y%m%d_%H%M%S')
             }
 
@@ -129,11 +134,11 @@ class CameraScraper:
         
         # Get current timestamp for this run
         run_timestamp = datetime.now(self.ny_tz).strftime('%Y%m%d_%H%M%S')
-        time_path = self.get_datetime_path()
         
         results = {
             'timestamp': run_timestamp,
-            'total_cameras': len(cameras),
+            'all_cameras': cameras,
+            # 'total_cameras': len(cameras),
             'successful': 0,
             'failed': 0,
             'details': []
@@ -158,14 +163,22 @@ class CameraScraper:
                     results['failed'] += 1
                 logger.info(f"Processed camera {result['camera_name']}: {result['status']}")
         
-        # Save run statistics in time-based path
-        stats_filename = f"data/{time_path}/run_statistics/{run_timestamp}_stats.json"
+        # # Save run statistics in time-based path
+        # stats_filename = f"metadata/{time_path}/run_statistics/{run_timestamp}_stats.json"
+        # self.save_file(
+        #     json.dumps(results, indent=2),
+        #     stats_filename,
+        #     'application/json'
+        # )
+        
+        stats_filename = f"metadata/latest_status.json"
         self.save_file(
             json.dumps(results, indent=2),
             stats_filename,
             'application/json'
         )
         
+
         logger.info(f"Completed processing. Success: {results['successful']}, Failed: {results['failed']}")
         return results
 
