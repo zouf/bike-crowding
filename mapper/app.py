@@ -1,57 +1,58 @@
 from flask import Flask, render_template
 import requests
-from pprint import pprint
 import os
-from google.cloud import storage
-import functools
 import json
+from google.cloud import storage
+from pprint import pprint
+
+# Initialize Flask app
 app = Flask(__name__)
 
-# Step 1: Fetch camera data from the API
+# Constants
 CAMERA_API_URL = "https://webcams.nyctmc.org/api/cameras"
+GCS_BUCKET_NAME = "bike-crowding"
+GCS_FILE_PATH = "metadata/latest_status.json"
 
 def fetch_camera_data():
-    """Fetch the camera data from the API"""
-    response = requests.get(CAMERA_API_URL)
-    if response.status_code == 200:
+    """Fetch camera data from the API."""
+    try:
+        response = requests.get(CAMERA_API_URL)
+        response.raise_for_status()
         return response.json()
-    else:
+    except requests.RequestException as e:
+        app.logger.error(f"Error fetching camera data: {e}")
         return []
 
-
-
 def get_camera_info():
-    """Read and parse a JSON file from Google Cloud Storage."""
-    storage_client = storage.Client()
-
-    # Define bucket and file path
-    bucket_name = "bike-crowding"
-    file_path = "metadata/latest_status.json"
-
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(file_path)
- 
-    # Download the JSON content as a string
-    json_content = blob.download_as_text()
-    # Parse the JSON string
-    return json.loads(json_content)
-
-
+    """Fetch and parse JSON data from Google Cloud Storage."""
+    try:
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(GCS_BUCKET_NAME)
+        blob = bucket.blob(GCS_FILE_PATH)
+        json_content = blob.download_as_text()
+        return json.loads(json_content)
+    except Exception as e:
+        app.logger.error(f"Error fetching GCS file: {e}")
+        return {}
 
 @app.route('/')
 def index():
-    """Render the Google Maps page with camera markers"""
-    # Fetch the camera data
+    """Render the Google Maps page with camera markers."""
+    # Fetch camera data from API and GCS
     cameras = fetch_camera_data()
-    name2link = {}
-    for cam in get_camera_info()['details']:
-        name2link[cam['camera_name']] = f'https://storage.cloud.google.com/bike-crowding/{cam["filename"]}'
+    camera_info = get_camera_info()
 
+    # Build a dictionary for camera name to GCS file link mapping
+    name_to_link = {
+        cam['camera_name']: f'https://storage.cloud.google.com/bike-crowding/{cam["filename"]}'
+        for cam in camera_info.get('details', [])
+    }
 
+    # Filter and structure the camera data for rendering
     camera_data = [
         {
             'name': camera['name'],
-            'gcslink': name2link.get(camera["name"], 'UNKNOWN'),
+            'gcslink': name_to_link.get(camera["name"], 'UNKNOWN'),
             'latitude': camera['latitude'],
             'longitude': camera['longitude'],
             'imageUrl': camera['imageUrl'],
@@ -59,10 +60,8 @@ def index():
         }
         for camera in cameras if camera.get('isOnline') == 'true'
     ]
-    
+
     return render_template('map.html', cameras=camera_data, API_KEY=os.environ['GOOGLE_MAPS_API_KEY'])
 
 if __name__ == '__main__':
-    pprint(get_camera_info())
     app.run(debug=True)
-
