@@ -1,80 +1,212 @@
-import os
-import cv2
-import datetime as dt
-from google.cloud import storage
-
+import functions_framework
 import requests
-import time
+from datetime import datetime
+import pytz
 import json
+import concurrent.futures
+import logging
+import os
+from pathlib import Path
+from flask import Flask
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-URL = (
-    "https://webcams.nyctmc.org/api/cameras/3f04a686-f97c-4187-8968-cb09265e08ff/image"
-)
-PROJECT_ID = "zouf-dev"
-BUCKET_NAME = "bike-crowding"
+class CameraScraper:
+    def __init__(self, is_local=True):
+        self.is_local = is_local
+        self.ny_tz = pytz.timezone('America/New_York')
+        
+        if is_local:
+            # Create local directories for development
+            self.base_dir = Path('downloaded_images')
+            self.base_dir.mkdir(exist_ok=True)
+        else:
+            # Use GCS in production with specific bucket
+            from google.cloud import storage
+            self.storage_client = storage.Client()
+            self.bucket = self.storage_client.bucket('bike-crowding')
+    
+    def get_datetime_path(self):
+        """Generate timestamp-based path structure"""
+        now = datetime.now(self.ny_tz)
+        return f"{now.year}/{now.month:02d}/{now.day:02d}/{now.hour:02d}"
+    
+    def get_all_cameras(self):
+        """Fetch list of all available cameras from NYC TMC API"""
+        try:
+            url = "https://webcams.nyctmc.org/api/cameras"
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            return response.json()
+        except requests.RequestException as e:
+            logger.error(f"Failed to fetch camera list: {e}")
+            return []
 
+    def save_file(self, content, filepath, content_type=None):
+        """Save file either locally or to GCS"""
+        if self.is_local:
+            full_path = self.base_dir / filepath
+            full_path.parent.mkdir(parents=True, exist_ok=True)
+            if isinstance(content, bytes):
+                full_path.write_bytes(content)
+            else:
+                full_path.write_text(content)
+            logger.info(f"Saved file locally: {full_path}")
+        else:
+            blob = self.bucket.blob(filepath)
+            if isinstance(content, str):
+                blob.upload_from_string(content, content_type=content_type)
+            else:
+                blob.upload_from_string(content, content_type=content_type)
+            logger.info(f"Uploaded to GCS: gs://bike-crowding/{filepath}")
 
-def upload_blob(bucket_name, source_file_name, destination_blob_name):
-    storage_client = storage.Client(project=PROJECT_ID)
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(destination_blob_name)
-    blob.upload_from_filename(source_file_name)
-
-
-def get_and_record_image(now: dt.datetime, url: str) -> str:
-    response = requests.get(url)
-    nowstr = now.strftime('%Y%m%dT%H%M%S')
-    response.raise_for_status()
-    year = now.strftime('%Y')
-    month = now.strftime('%m')
-    day = now.strftime('%d')
-    directory = f'/home/mattzouf/bike-crowding/raw/{year}/{month}/{day}'
-    os.makedirs(directory, exist_ok=True)
-    path=f'/home/mattzouf/bike-crowding/raw/{year}/{month}/{day}/image.{nowstr}.jpg'
-    with open(path,'wb') as fp:
-        fp.write(response.content)
-    p=upload_blob(BUCKET_NAME, path, f'images/centralpark/{year}/{month}/{day}/screenshot.{nowstr}.jpg')
-    return path
-
-def main():
-    i = 0
-    with open('/home/mattzouf/bike-crowding/log.csv', 'a+') as fplog:
-        while True:
-            now = dt.datetime.utcnow()
-            path = get_and_record_image(now, URL)
-            image = cv2.imread(path)
-
-            # Convert the image to grayscale
-            grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            # Apply a blur to the image
-            blurred_image = cv2.blur(grayscale_image, (5, 5))
-            # Apply a threshold to the image
-            thresholded_image = cv2.threshold(
-                blurred_image, 127, 255, cv2.THRESH_BINARY
-            )[1]
-            # Find the contours in the image
-            contours, hierarchy = cv2.findContours(
-                thresholded_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
-            )
-            # Find the number of contours
-            number_of_people = len(contours)
-
-            # Print the number of people
-            data = {
-                "time": now.isoformat(),
-                "number_of_people": str(number_of_people),
-                "path_to_image": path,
+    def download_camera_image(self, camera):
+        """Download image from a single camera"""
+        try:
+            camera_id = camera['id']
+            url = f"https://webcams.nyctmc.org/api/cameras/{camera_id}/image"
+            
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            
+            # Get timestamp for both path and filename
+            now = datetime.now(self.ny_tz)
+            timestamp = now.strftime('%Y%m%d_%H%M%S')
+            
+            # Create time-based directory structure
+            time_path = self.get_datetime_path()
+            
+            # Use camera name in path (cleaned of special characters)
+            safe_name = "".join(c if c.isalnum() else "_" for c in camera['name'])
+            
+            # Construct final path: time/camera_name/timestamp_id.jpg
+            filename = f"data/{time_path}/{safe_name}/{timestamp}_{camera_id}.jpg"
+            
+            # Save metadata alongside image
+            metadata = {
+                'camera_id': camera_id,
+                'camera_name': camera['name'],
+                'timestamp': timestamp,
+                'capture_time': now.isoformat(),
+                'url': url,
+                'location': camera.get('location', {}),
+                'status': 'success'
             }
-            print(data)
-            fplog.write(','.join(list(data.values()))+'\n')
-            upload_blob(BUCKET_NAME, '/home/mattzouf/bike-crowding/log.csv', 'logs/central_park.csv')
-            time.sleep(15)
-            if os.path.exists(path):
-                os.remove(path)
+            
+            # Save both image and metadata
+            self.save_file(response.content, filename, 'image/jpeg')
+            self.save_file(
+                json.dumps(metadata, indent=2),
+                filename.replace('.jpg', '_metadata.json'),
+                'application/json'
+            )
+            
+            return {
+                'camera_id': camera_id,
+                'camera_name': camera['name'],
+                'status': 'success',
+                'filename': filename,
+                'timestamp': timestamp
+            }
+            
+        except Exception as e:
+            logger.error(f"Error processing camera {camera.get('id', 'unknown')}: {e}")
+            return {
+                'camera_id': camera.get('id', 'unknown'),
+                'camera_name': camera.get('name', 'unknown'),
+                'status': 'error',
+                'error': str(e),
+                'timestamp': datetime.now(self.ny_tz).strftime('%Y%m%d_%H%M%S')
+            }
+
+    def process_all_cameras(self, max_workers=10):
+        """Process all cameras with concurrent execution"""
+        cameras = self.get_all_cameras()
+        
+        # Get current timestamp for this run
+        run_timestamp = datetime.now(self.ny_tz).strftime('%Y%m%d_%H%M%S')
+        time_path = self.get_datetime_path()
+        
+        results = {
+            'timestamp': run_timestamp,
+            'total_cameras': len(cameras),
+            'successful': 0,
+            'failed': 0,
+            'details': []
+        }
+        
+        if not cameras:
+            logger.warning("No cameras found!")
+            return results
+        
+        logger.info(f"Starting to process {len(cameras)} cameras")
+        
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_camera = {executor.submit(self.download_camera_image, camera): camera 
+                              for camera in cameras}
+            
+            for future in concurrent.futures.as_completed(future_to_camera):
+                result = future.result()
+                results['details'].append(result)
+                if result['status'] == 'success':
+                    results['successful'] += 1
+                else:
+                    results['failed'] += 1
+                logger.info(f"Processed camera {result['camera_name']}: {result['status']}")
+        
+        # Save run statistics in time-based path
+        stats_filename = f"data/{time_path}/run_statistics/{run_timestamp}_stats.json"
+        self.save_file(
+            json.dumps(results, indent=2),
+            stats_filename,
+            'application/json'
+        )
+        
+        logger.info(f"Completed processing. Success: {results['successful']}, Failed: {results['failed']}")
+        return results
+
+@functions_framework.http
+def scrape_all_cameras(request):
+    """HTTP Cloud Function to scrape all NYC traffic cameras"""
+    try:
+        # Use production mode by default for cloud deployment
+        is_local = os.getenv('ENVIRONMENT', 'production') == 'development'
+        scraper = CameraScraper(is_local=is_local)
+        results = scraper.process_all_cameras()
+        
+        return {
+            'status': 'complete',
+            'results': results
+        }
+        
+    except Exception as e:
+        logger.error(f"Fatal error in main function: {e}")
+        return {
+            'status': 'error',
+            'error': str(e)
+        }
 
 
 
+@app.route('/health')
+def health():
+    return 'OK'
+
+@functions_framework.http
+def main(request):
+    # Set the FLASK_APP environment variable to point to your app module
+    os.environ['FLASK_APP'] = __name__
+
+    # Create a Flask app instance
+    app = Flask(__name__)
+
+    # Run the Flask app
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
 
 if __name__ == "__main__":
-    main()
+    # For direct Python execution
+    class MockRequest: pass
+    result = scrape_all_cameras(MockRequest())
+    print(json.dumps(result, indent=2))
