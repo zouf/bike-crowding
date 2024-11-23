@@ -170,7 +170,7 @@ class CameraScraper:
         return results
 
 @app.route('/')
-def scrape_all_cameras(request):
+def scrape_all_cameras(request=None):
     """HTTP Cloud Function to scrape all NYC traffic cameras"""
     try:
         print(request)
