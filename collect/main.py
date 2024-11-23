@@ -84,7 +84,7 @@ class CameraScraper:
             safe_name = "".join(c if c.isalnum() else "_" for c in camera['name'])
             
             # Construct final path: time/camera_name/timestamp_id.jpg
-            filename = f"data/{time_path}/{safe_name}/{timestamp}_{camera_id}.jpg"
+            filename = f"data/{safe_name}/{time_path}/{timestamp}_{camera_id}.jpg"
             
             # Save metadata alongside image
             metadata = {
@@ -169,8 +169,8 @@ class CameraScraper:
         logger.info(f"Completed processing. Success: {results['successful']}, Failed: {results['failed']}")
         return results
 
-@app.route('/')
-def scrape_all_cameras(request=None):
+@functions_framework.http
+def scrape_all_cameras(request):
     """HTTP Cloud Function to scrape all NYC traffic cameras"""
     try:
         print(request)
@@ -192,24 +192,8 @@ def scrape_all_cameras(request=None):
         }
 
 
-
-@app.route('/health')
-def health():
-    return 'OK'
-
-@functions_framework.http
-def main(request):
-    # Set the FLASK_APP environment variable to point to your app module
-    os.environ['FLASK_APP'] = __name__
-
-    # Create a Flask app instance
-    app = Flask(__name__)
-
-    # Run the Flask app
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
-
-if __name__ == "__main__":
-    # For direct Python execution
-    class MockRequest: pass
-    result = scrape_all_cameras(MockRequest())
-    print(json.dumps(result, indent=2))
+# if __name__ == "__main__":
+#     # For direct Python execution
+#     class MockRequest: pass
+#     result = scrape_all_cameras(MockRequest())
+#     print(json.dumps(result, indent=2))
