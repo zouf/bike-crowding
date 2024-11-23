@@ -169,10 +169,11 @@ class CameraScraper:
         logger.info(f"Completed processing. Success: {results['successful']}, Failed: {results['failed']}")
         return results
 
-@functions_framework.http
+@app.route('/')
 def scrape_all_cameras(request):
     """HTTP Cloud Function to scrape all NYC traffic cameras"""
     try:
+        print(request)
         # Use production mode by default for cloud deployment
         is_local = os.getenv('ENVIRONMENT', 'production') == 'development'
         scraper = CameraScraper(is_local=is_local)
