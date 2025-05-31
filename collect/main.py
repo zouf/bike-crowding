@@ -11,6 +11,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
+BUCKET_NAME='nyc-webcam-capture'
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -28,7 +30,7 @@ class CameraScraper:
             # Use GCS in production with specific bucket
             from google.cloud import storage
             self.storage_client = storage.Client()
-            self.bucket = self.storage_client.bucket('bike-crowding')
+            self.bucket = self.storage_client.bucket(BUCKET_NAME)
     
     def get_datetime_path(self):
         """Generate timestamp-based path structure"""
@@ -62,7 +64,7 @@ class CameraScraper:
                 blob.upload_from_string(content, content_type=content_type)
             else:
                 blob.upload_from_string(content, content_type=content_type)
-            logger.info(f"Uploaded to GCS: gs://bike-crowding/{filepath}")
+            logger.info(f"Uploaded to GCS: gs://{BUCKET_NAME}/{filepath}")
 
     def download_camera_image(self, camera):
         """Download image from a single camera"""
