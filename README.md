@@ -77,13 +77,29 @@ gcloud scheduler jobs create pubsub minute-trigger-job --schedule "* * * * *" --
 
 #### Local Development
 
-To run the `collect` service locally for testing, you can uncomment the `if __name__ == "__main__":` block at the end of the `collect/main.py` file. This will simulate an hourly trigger and scrape all cameras.
+To run the `collect` service locally for testing, follow these steps:
 
-```bash
-ENVIRONMENT=development python collect/main.py
-```
+1.  **Navigate to the `collect` directory:**
+    ```bash
+    cd collect
+    ```
 
-This will save the images to a local `downloaded_images` directory instead of uploading them to GCS.
+2.  **Activate the virtual environment:**
+    ```bash
+    source venv/bin/activate
+    ```
+
+3.  **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Run the script:**
+    The `if __name__ == "__main__":` block at the end of the `collect/main.py` file is configured to run the script locally. It will scrape all cameras and save the images to a local `downloaded_images` directory.
+    ```bash
+    python main.py
+    ```
+    You can also run the script with a specific number of threads by modifying the `max_workers` argument in the `process_all_cameras` function call within the `if __name__ == "__main__":` block.
 
 #### Deployment
 
