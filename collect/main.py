@@ -76,7 +76,7 @@ class CameraScraper:
         """Fetch list of all available cameras from NYC TMC API"""
         try:
             url = "https://webcams.nyctmc.org/api/cameras"
-            response = requests.get(url, timeout=10)
+            response = requests.get(url, timeout=30)
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
@@ -107,7 +107,7 @@ class CameraScraper:
             camera_id = camera['id']
             url = f"https://webcams.nyctmc.org/api/cameras/{camera_id}/image"
             
-            response = requests.get(url, timeout=10)
+            response = requests.get(url, timeout=30)
             response.raise_for_status()
 
             # Calculate image hash
@@ -342,8 +342,8 @@ def scrape_all_cameras(cloud_event):
         }
 
 
-# if __name__ == "__main__":
-#     # For direct Python execution
-#     class MockRequest: pass
-#     result = scrape_all_cameras(MockRequest())
-#     print(json.dumps(result, indent=2))
+if __name__ == "__main__":
+    # For direct Python execution
+    scraper = CameraScraper(is_local=True)
+    results = scraper.process_all_cameras()
+    print(json.dumps(results, indent=2))
