@@ -345,5 +345,5 @@ def scrape_all_cameras(cloud_event):
 if __name__ == "__main__":
     # For direct Python execution
     scraper = CameraScraper(is_local=True)
-    results = scraper.process_all_cameras()
+    results = scraper.process_all_cameras(max_workers=2)
     print(json.dumps(results, indent=2))
