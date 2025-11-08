@@ -52,5 +52,7 @@ sh deploy.sh
 Alternatively, you can run the following command directly:
 
 ```bash
-gcloud functions deploy webcam-scraper-v2 --source=single-scraper --runtime=python312 --trigger-http --entry-point=scrape_all_cameras --region=us-east1
+gcloud functions deploy webcam-scraper-v2 --source=single-scraper --runtime=python312 --trigger-topic=single-webcam-trigger --entry-point=scrape_all_cameras --region=us-east1
 ```
+
+The function is triggered by messages published to the `single-webcam-trigger` Pub/Sub topic.
