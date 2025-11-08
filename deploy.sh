@@ -1,1 +1,1 @@
-gcloud functions deploy scrape_all_cameras --source=collect --runtime=python312 --trigger-topic=hourly-trigger --trigger-topic=minute-trigger --entry-point=scrape_all_cameras --region=us-east1
+gcloud functions deploy webcam-scraper-v2 --source=single-scraper --runtime=python312 --trigger-http --entry-point=scrape_all_cameras --region=us-east1

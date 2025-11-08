@@ -43,7 +43,13 @@ The service performs the following steps:
 
 #### Deployment
 
-To deploy the `webcam-scraper-v2` service to Google Cloud, run the following command:
+To deploy the `webcam-scraper-v2` service to Google Cloud, you can run the `deploy.sh` script:
+
+```bash
+sh deploy.sh
+```
+
+Alternatively, you can run the following command directly:
 
 ```bash
 gcloud functions deploy webcam-scraper-v2 --source=single-scraper --runtime=python312 --trigger-http --entry-point=scrape_all_cameras --region=us-east1
