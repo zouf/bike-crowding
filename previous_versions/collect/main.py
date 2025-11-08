@@ -75,8 +75,7 @@ class CameraScraper:
     def get_all_cameras(self):
         """Fetch list of all available cameras from NYC TMC API"""
         try:
-            url = "https://webcams.nyctmc.org/api/cameras"
-            response = requests.get(url, timeout=30)
+            response = requests.get(url, timeout=60)
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
@@ -107,7 +106,7 @@ class CameraScraper:
             camera_id = camera['id']
             url = f"https://webcams.nyctmc.org/api/cameras/{camera_id}/image"
             
-            response = requests.get(url, timeout=30)
+            response = requests.get(url, timeout=60)
             response.raise_for_status()
 
             # Calculate image hash
@@ -290,6 +289,8 @@ class CameraScraper:
         #     'application/json'
         # )
         
+        self.log_results_to_csv(results)
+
         # Remove metadata from details before saving to JSON
         for detail in results['details']:
             if 'metadata' in detail:
@@ -304,8 +305,6 @@ class CameraScraper:
         
 
         self.save_image_hashes()
-
-        self.log_results_to_csv(results)
 
         logger.info(f"Completed processing. Success: {results['successful']}, Failed: {results['failed']}, Skipped: {results['skipped']}")
         return results

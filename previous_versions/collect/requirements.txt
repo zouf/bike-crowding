@@ -4,4 +4,6 @@ functions-framework==3.9.2
 pytz==2024.1
 flask==3.1.0
 Pillow==12.0.0
-imagehash==4.3.1
+imagehash==4.3.2
+pytz
+pytz

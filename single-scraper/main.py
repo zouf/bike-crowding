@@ -12,8 +12,8 @@ import base64
 
 BUCKET_NAME = 'nyc-webcam-capture'
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def scrape_all_cameras(event, context):
     """
@@ -23,14 +23,12 @@ def scrape_all_cameras(event, context):
         logger.info(f"Function started. Message ID: {context.event_id}")
 
         # Fetch all cameras
-        url = "https://webcams.nyctmc.org/api/cameras"
-        response = requests.get(url, timeout=30)
+        response = requests.get(url, timeout=60)
         response.raise_for_status()
         all_cameras = response.json()
         logger.info(f"Fetched {len(all_cameras)} cameras from API.")
 
-        # For debugging, scrape the first 50 cameras + Central Park camera
-        cameras_to_scrape = all_cameras[:50]
+        cameras_to_scrape = all_cameras #[:50]
         central_park_camera = {
             "name": "Central Park @ 72nd St Post 37",
             "id": "3f04a686-f97c-4187-8968-cb09265e08ff"
@@ -51,7 +49,7 @@ def scrape_all_cameras(event, context):
             try:
                 url = f"https://webcams.nyctmc.org/api/cameras/{camera_id}/image"
                 
-                response = requests.get(url, timeout=30)
+                response = requests.get(url, timeout=60)
                 response.raise_for_status()
 
                 now = datetime.now(ny_tz)
@@ -63,7 +61,10 @@ def scrape_all_cameras(event, context):
                 
                 img_byte_arr = io.BytesIO()
                 img = Image.open(io.BytesIO(response.content))
+                if img.mode == 'RGBA':
+                    img = img.convert('RGB')
                 img.save(img_byte_arr, format='JPEG', quality=85)
+                logger.info(f"Successfully processed image for {camera_name} ({camera_id})")
                 img_byte_arr = img_byte_arr.getvalue()
 
                 blob = bucket.blob(filename)
