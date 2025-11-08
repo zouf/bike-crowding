@@ -1,0 +1,2777 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Camera Locations Map</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha512-wc08QucFMRN1iFerQzA738BDcWPqXe7P0I6OKTq5GA9HmnOEOqIwulkuL8IWEhrT9b9epBXKGswoRFrw1z5Q"
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha512-wrbmQZdqgU67IVPzo92W9ACAeFB/r0KG4Ge8m4QnbhGMp7A7/x0QqhCUo8D4CZ0zQpz2gl09nRabPjoJ+XY"
+        crossorigin=""></script>
+    </head>
+    <body>
+        <div id="mapid" style="height: 500px;"></div>
+        <script>
+            var mymap = L.map('mapid').setView([40.712800, -74.005900], 12);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mymap);
+
+            
+        var marker = L.marker([40.7721568767076, -73.9817190170288]).addTo(mymap);
+        marker.bindPopup("Columbus Ave @ 65 St");
+        
+        var marker = L.marker([40.864552, -73.813781]).addTo(mymap);
+        marker.bindPopup("Pelham Shore Rd @ City Island Rd");
+        
+        var marker = L.marker([40.692157, -73.834927]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ 111 St");
+        
+        var marker = L.marker([40.8628358166596, -73.9170026779174]).addTo(mymap);
+        marker.bindPopup("207 ST @ 9 Ave");
+        
+        var marker = L.marker([40.744441, -73.971242]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 36 St");
+        
+        var marker = L.marker([40.68548746, -73.98067049]).addTo(mymap);
+        marker.bindPopup("3 Ave @ Atlantic Ave");
+        
+        var marker = L.marker([40.52806, -74.216696]).addTo(mymap);
+        marker.bindPopup("C3-KWV-02-NB_at_Bloomngdale_Rd-Ex2");
+        
+        var marker = L.marker([40.674746, -73.997865]).addTo(mymap);
+        marker.bindPopup("Smith St @ 9 St - 170.106");
+        
+        var marker = L.marker([40.742755, -73.916943]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ 48 St - 52.130");
+        
+        var marker = L.marker([40.754591, -73.999142]).addTo(mymap);
+        marker.bindPopup("10 Ave @ W 34 St");
+        
+        var marker = L.marker([40.8838314747516, -73.9145135879516]).addTo(mymap);
+        marker.bindPopup("Henry Hudson Pkwy @ 232 St");
+        
+        var marker = L.marker([40.829767, -73.834824]).addTo(mymap);
+        marker.bindPopup("C1-BRE-06_W - WB_at_CBX-Hutch_Int-EX6A");
+        
+        var marker = L.marker([40.6846, -74.0009]).addTo(mymap);
+        marker.bindPopup("Hicks St NB @ Sackett St");
+        
+        var marker = L.marker([40.715157, -74.00213]).addTo(mymap);
+        marker.bindPopup("Worth St @ Centre St");
+        
+        var marker = L.marker([40.80798, -73.945472]).addTo(mymap);
+        marker.bindPopup("Lenox Ave @ 125 St");
+        
+        var marker = L.marker([40.529434, -74.161351]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Arden Ave");
+        
+        var marker = L.marker([40.707365, -73.998188]).addTo(mymap);
+        marker.bindPopup("BB-28A Manhattan Tower North");
+        
+        var marker = L.marker([40.7029, -73.8691]).addTo(mymap);
+        marker.bindPopup("Myrtle Ave @ 79 Lane - 73.74");
+        
+        var marker = L.marker([40.674459, -73.80218]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Van Wyck Expy W S/R");
+        
+        var marker = L.marker([40.6656, -73.9536]).addTo(mymap);
+        marker.bindPopup("Rogers Ave @ Montgomery St");
+        
+        var marker = L.marker([40.675787, -73.896898]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Pennsylvania Ave");
+        
+        var marker = L.marker([40.8617972187343, -73.8967037200927]).addTo(mymap);
+        marker.bindPopup("Fordham Rd and Grand Concourse");
+        
+        var marker = L.marker([40.6668, -73.779833]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ S. Conduit Ave");
+        
+        var marker = L.marker([40.759356, -73.901707]).addTo(mymap);
+        marker.bindPopup("C5-BQE-42-WB_at_30th_Ave-Ex43");
+        
+        var marker = L.marker([40.588759, -73.819342]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ North Channel Bridge");
+        
+        var marker = L.marker([40.757953, -73.98549]).addTo(mymap);
+        marker.bindPopup("Broadway @ 45 St");
+        
+        var marker = L.marker([40.735226, -73.990946]).addTo(mymap);
+        marker.bindPopup("Union Sq @ 14 St");
+        
+        var marker = L.marker([40.622323, -74.174917]).addTo(mymap);
+        marker.bindPopup("C3-SIE-02-EB_at_WSE_Int-Ex3");
+        
+        var marker = L.marker([40.798007, -73.973727]).addTo(mymap);
+        marker.bindPopup("Henry Hudson Pkwy @ 99 St");
+        
+        var marker = L.marker([40.728739, -74.007137]).addTo(mymap);
+        marker.bindPopup("West Houston @ Hudson St");
+        
+        var marker = L.marker([40.807061, -73.933681]).addTo(mymap);
+        marker.bindPopup("Third Ave Bridge");
+        
+        var marker = L.marker([40.762982, -73.875305]).addTo(mymap);
+        marker.bindPopup("Astoria Blvd @ 94 St");
+        
+        var marker = L.marker([40.60171, -74.16325]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Signs Rd - quad - ptz - 0.138");
+        
+        var marker = L.marker([40.714868, -73.976559]).addTo(mymap);
+        marker.bindPopup("WBB -17  SOR - 2  @ Delancey St/FDR");
+        
+        var marker = L.marker([40.75258, -73.94375]).addTo(mymap);
+        marker.bindPopup("Queens Plaza North @ East 21 st");
+        
+        var marker = L.marker([40.590366, -74.066659]).addTo(mymap);
+        marker.bindPopup("Father Capodanno Blvd @ Sands LN");
+        
+        var marker = L.marker([40.75736, -73.986]).addTo(mymap);
+        marker.bindPopup("7 AVE @ 44 St");
+        
+        var marker = L.marker([40.665007, -73.819358]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ 122 St");
+        
+        var marker = L.marker([40.692336, -73.988893]).addTo(mymap);
+        marker.bindPopup("Adams St @ Willoughby St");
+        
+        var marker = L.marker([40.607106, -74.060997]).addTo(mymap);
+        marker.bindPopup("School Rd @ Bay St");
+        
+        var marker = L.marker([40.759495, -73.999098]).addTo(mymap);
+        marker.bindPopup("11 Ave @ W 40 St");
+        
+        var marker = L.marker([40.6352, -74.0171]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 65 St - Ent EB BQE/Gowanus");
+        
+        var marker = L.marker([40.633188, -74.016338]).addTo(mymap);
+        marker.bindPopup("Gowanus Expy @ 7 Ave & 67 St");
+        
+        var marker = L.marker([40.696267, -73.991073]).addTo(mymap);
+        marker.bindPopup("Cadman Plz West @ Tillary St");
+        
+        var marker = L.marker([40.708186, -73.999623]).addTo(mymap);
+        marker.bindPopup("BB-24 South Rdwy @ Above South St");
+        
+        var marker = L.marker([40.695092, -73.928357]).addTo(mymap);
+        marker.bindPopup("Bushwick Ave @ De Kalb Ave");
+        
+        var marker = L.marker([40.708773, -73.991612]).addTo(mymap);
+        marker.bindPopup("MHB-24 Manh S URDWY @ Twr");
+        
+        var marker = L.marker([40.838087, -73.824953]).addTo(mymap);
+        marker.bindPopup("C1-BRE-08-NB_at_Waterbury_Ave-Ex7B");
+        
+        var marker = L.marker([40.7821012323438, -73.9436960220336]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 96 Street");
+        
+        var marker = L.marker([40.7536616174888, -73.8985919952392]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 68 St");
+        
+        var marker = L.marker([40.570469, -74.109749]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ New Dorp Lane");
+        
+        var marker = L.marker([40.7502805568614, -73.9401340484619]).addTo(mymap);
+        marker.bindPopup("QBB @ Crescent St");
+        
+        var marker = L.marker([40.723031, -74.01141]).addTo(mymap);
+        marker.bindPopup("C4-WST-03-Med_at_Vestry_St");
+        
+        var marker = L.marker([40.756669, -73.828794]).addTo(mymap);
+        marker.bindPopup("Main St @ Sanford Ave");
+        
+        var marker = L.marker([40.714428, -73.97487]).addTo(mymap);
+        marker.bindPopup("WBB - Manhattan South Tower");
+        
+        var marker = L.marker([40.824429, -73.944747]).addTo(mymap);
+        marker.bindPopup("St Nicholas Ave @ 145 St");
+        
+        var marker = L.marker([40.731963, -73.919235]).addTo(mymap);
+        marker.bindPopup("C5-LIE-08-EB_48th_St_LL-Ex16");
+        
+        var marker = L.marker([40.74823, -73.93926]).addTo(mymap);
+        marker.bindPopup("Jackson Ave @ 42 Rd");
+        
+        var marker = L.marker([40.761186, -73.955676]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 64 St");
+        
+        var marker = L.marker([40.7642913321744, -73.9765262603759]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 58 St");
+        
+        var marker = L.marker([40.878251, -73.869826]).addTo(mymap);
+        marker.bindPopup("Bronx River Pkwy @ East Gun Hill RD (NB)");
+        
+        var marker = L.marker([40.6003, -73.9955]).addTo(mymap);
+        marker.bindPopup("Bay Parkway @ Benson Ave");
+        
+        var marker = L.marker([40.678742, -73.953032]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Bedford Ave");
+        
+        var marker = L.marker([40.74778, -73.882616]).addTo(mymap);
+        marker.bindPopup("Roosevelt Ave @ Baxter Ave");
+        
+        var marker = L.marker([40.61637, -74.026182]).addTo(mymap);
+        marker.bindPopup("Gowanus Expy @ Gatling Pl @ 92 St - 4.34");
+        
+        var marker = L.marker([40.763583, -73.836038]).addTo(mymap);
+        marker.bindPopup("College Point Blvd @ 35 Ave");
+        
+        var marker = L.marker([40.6393, -74.0236]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 65 St - Ent. EB BQE/Gowanus");
+        
+        var marker = L.marker([40.782031, -73.971734]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 81 St");
+        
+        var marker = L.marker([40.585, -73.9288]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Plumb 3 St");
+        
+        var marker = L.marker([40.83536, -73.83849]).addTo(mymap);
+        marker.bindPopup("Hutchhinson River Pkwy @ Waterbury Ave");
+        
+        var marker = L.marker([40.708272, -73.999488]).addTo(mymap);
+        marker.bindPopup("BB-21 North Rdwy @ Above South St");
+        
+        var marker = L.marker([40.6043925500801, -74.0169858619018]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Bay 8th St");
+        
+        var marker = L.marker([40.758271, -73.855567]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 114 St");
+        
+        var marker = L.marker([40.722929, -73.847301]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Yellowstone Blvd");
+        
+        var marker = L.marker([40.7572700598272, -73.9599609375]).addTo(mymap);
+        marker.bindPopup("Sutton Pl @ 58 St");
+        
+        var marker = L.marker([40.755254, -73.950939]).addTo(mymap);
+        marker.bindPopup("QBB UL @ Queens Pier");
+        
+        var marker = L.marker([40.672635, -73.785637]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Baisley Blvd");
+        
+        var marker = L.marker([40.766796, -73.9829]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 57 St");
+        
+        var marker = L.marker([40.666, -73.994]).addTo(mymap);
+        marker.bindPopup("Prospect Expy @ 3rd Ave & 4th Ave");
+        
+        var marker = L.marker([40.732235, -73.765665]).addTo(mymap);
+        marker.bindPopup("C5-CVE-01-SB_at_Union_Turnpike");
+        
+        var marker = L.marker([40.72909457, -73.92731605]).addTo(mymap);
+        marker.bindPopup("C5-BQE-31A_W_at_56th Rd");
+        
+        var marker = L.marker([40.7622962700164, -73.9723570534941]).addTo(mymap);
+        marker.bindPopup("MADISON @ 57 ST");
+        
+        var marker = L.marker([40.6509177712612, -73.8657617568969]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Erskine");
+        
+        var marker = L.marker([40.858893, -73.923042]).addTo(mymap);
+        marker.bindPopup("Harlem River Dr @ Dyckman St /10 Av");
+        
+        var marker = L.marker([40.710749, -73.959917]).addTo(mymap);
+        marker.bindPopup("Roebling St @ South 4 St");
+        
+        var marker = L.marker([40.70589, -74.0133]).addTo(mymap);
+        marker.bindPopup("Broadway @ Morris St");
+        
+        var marker = L.marker([40.681271, -73.844625]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Rockaway Blvd");
+        
+        var marker = L.marker([40.775652, -73.96035]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 79 St");
+        
+        var marker = L.marker([40.609628, -73.819118]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ 6 Rd");
+        
+        var marker = L.marker([40.724979, -73.934058]).addTo(mymap);
+        marker.bindPopup("C2-BQE-30-EB_at_Stewrt_Ave_Kosc-Br");
+        
+        var marker = L.marker([40.755508, -73.977437]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ 46 St - Manhattan");
+        
+        var marker = L.marker([40.818617, -73.96099]).addTo(mymap);
+        marker.bindPopup("Henry Hudson Pkwy @ 125 St");
+        
+        var marker = L.marker([40.747325, -73.976079]).addTo(mymap);
+        marker.bindPopup("Queens Midtown Tunnel Exit @ 37 St");
+        
+        var marker = L.marker([40.8783, -73.87004]).addTo(mymap);
+        marker.bindPopup("Bronx River Pkwy @ E Gun Hill RD");
+        
+        var marker = L.marker([40.679247, -73.880712]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Highland Pl (Berriman St)");
+        
+        var marker = L.marker([40.66677243, -73.99483353]).addTo(mymap);
+        marker.bindPopup("3 Ave @ Prospect Ave");
+        
+        var marker = L.marker([40.689993, -73.98163]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ DeKalb Ave");
+        
+        var marker = L.marker([40.678784, -73.844359]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ 107 Ave");
+        
+        var marker = L.marker([40.618041, -74.161434]).addTo(mymap);
+        marker.bindPopup("C3-SIE-04-WB_at_Lambert_St_Ex6");
+        
+        var marker = L.marker([40.764289, -73.973023]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 59 St");
+        
+        var marker = L.marker([40.846142, -73.932426]).addTo(mymap);
+        marker.bindPopup("Amsterdam @ 178 St");
+        
+        var marker = L.marker([40.779679, -73.988462]).addTo(mymap);
+        marker.bindPopup("Henry Hudson Pkwy @ 70 St");
+        
+        var marker = L.marker([40.685799, -73.846987]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ 97 Ave");
+        
+        var marker = L.marker([40.763955, -73.828126]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Union St");
+        
+        var marker = L.marker([40.614704, -73.928063]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Fillmore Ave");
+        
+        var marker = L.marker([40.6809634749315, -73.9670419692993]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Vanderbilt Ave");
+        
+        var marker = L.marker([40.744962, -73.894487]).addTo(mymap);
+        marker.bindPopup("C5-BQE-37-EB_at_41st_Ave");
+        
+        var marker = L.marker([40.659301, -73.854457]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ 158 Ave");
+        
+        var marker = L.marker([40.726934, -73.75371]).addTo(mymap);
+        marker.bindPopup("GCP @ 214 St");
+        
+        var marker = L.marker([40.702613, -73.855269]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Myrtle Ave");
+        
+        var marker = L.marker([40.56327, -74.16978]).addTo(mymap);
+        marker.bindPopup("Drumgoole Rd W @ Richmond Ave - quad - ptz - 0.162");
+        
+        var marker = L.marker([40.507726, -74.230003]).addTo(mymap);
+        marker.bindPopup("Hylan Ave @ Page Ave");
+        
+        var marker = L.marker([40.663093, -73.96236]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Empire Blvd");
+        
+        var marker = L.marker([40.648255, -74.013992]).addTo(mymap);
+        marker.bindPopup("Gowanus Expy @ 49 St");
+        
+        var marker = L.marker([40.828221, -73.930969]).addTo(mymap);
+        marker.bindPopup("C1-MDE-06-NB_at_Macombs_Dam_Br-Ex5");
+        
+        var marker = L.marker([40.531918, -74.199575]).addTo(mymap);
+        marker.bindPopup("Drumgoogle Rd E @ Vernon Ave");
+        
+        var marker = L.marker([40.865204, -73.836137]).addTo(mymap);
+        marker.bindPopup("East Gun Hill RD @ Allerton Ave");
+        
+        var marker = L.marker([40.678191, -73.897749]).addTo(mymap);
+        marker.bindPopup("Jackie Robinson Pkwy @ Jamaica Ave");
+        
+        var marker = L.marker([40.770472, -73.916515]).addTo(mymap);
+        marker.bindPopup("Astoria Blvd N S/R @ 32 St");
+        
+        var marker = L.marker([40.700743, -73.989736]).addTo(mymap);
+        marker.bindPopup("Washington St @ Prospect St");
+        
+        var marker = L.marker([40.589805, -74.193632]).addTo(mymap);
+        marker.bindPopup("C3-WSE-08-SB_at_Victory_Blvd-Ex7");
+        
+        var marker = L.marker([40.731361, -73.982486]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 14 St");
+        
+        var marker = L.marker([40.74907941, -73.75828283]).addTo(mymap);
+        marker.bindPopup("C5-LIE-29-WB_at_220th_St-Ex29");
+        
+        var marker = L.marker([40.592668, -74.163322]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Draper Pl");
+        
+        var marker = L.marker([40.641938, -74.020277]).addTo(mymap);
+        marker.bindPopup("BQE @ BELT PKWY Ramp & 60 St");
+        
+        var marker = L.marker([40.725458, -73.996756]).addTo(mymap);
+        marker.bindPopup("Houston St @ Broadway");
+        
+        var marker = L.marker([40.747615, -73.936121]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Sunnyside Br");
+        
+        var marker = L.marker([40.709853, -73.991746]).addTo(mymap);
+        marker.bindPopup("South Street @ Pike Street");
+        
+        var marker = L.marker([40.7493702419327, -73.9386320114135]).addTo(mymap);
+        marker.bindPopup("Queens Plaza North @ 2811 (Westside)");
+        
+        var marker = L.marker([40.752129, -73.74689]).addTo(mymap);
+        marker.bindPopup("Long Island Expy @ East Hampton Blvd");
+        
+        var marker = L.marker([40.781556, -73.960389]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 86 St");
+        
+        var marker = L.marker([40.715049, -73.97487]).addTo(mymap);
+        marker.bindPopup("WBB - 5 NOR-5 @ Delancey St North/FDR");
+        
+        var marker = L.marker([40.7086859556133, -74.001932144165]).addTo(mymap);
+        marker.bindPopup("Pearl St @ Dover");
+        
+        var marker = L.marker([40.755492, -73.885347]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 82 St");
+        
+        var marker = L.marker([40.751323, -73.775287]).addTo(mymap);
+        marker.bindPopup("Clearview Expy @ 50 Ave");
+        
+        var marker = L.marker([40.7670031362413, -73.9011914460327]).addTo(mymap);
+        marker.bindPopup("GCP @ Astoria Blvd @ 49 St");
+        
+        var marker = L.marker([40.734007, -73.952283]).addTo(mymap);
+        marker.bindPopup("McGuinness Blvd @ Green St");
+        
+        var marker = L.marker([40.683572, -73.976083]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Barclays Center");
+        
+        var marker = L.marker([40.872207, -73.887658]).addTo(mymap);
+        marker.bindPopup("Grand Concourse @ Bedford Park Blvd");
+        
+        var marker = L.marker([40.747994, -73.833113]).addTo(mymap);
+        marker.bindPopup("College Point Blvd @ Booth Memorial Ave");
+        
+        var marker = L.marker([40.7577251647716, -73.776798248291]).addTo(mymap);
+        marker.bindPopup("Clearview @ Northern Blvd");
+        
+        var marker = L.marker([40.708045, -73.999541]).addTo(mymap);
+        marker.bindPopup("Br Br-20 S Rdwy FDR Dr");
+        
+        var marker = L.marker([40.610941, -74.098029]).addTo(mymap);
+        marker.bindPopup("SIE @ Clove Rd");
+        
+        var marker = L.marker([40.713578, -73.998542]).addTo(mymap);
+        marker.bindPopup("Worth Street @ Bowery");
+        
+        var marker = L.marker([40.645287, -74.01669]).addTo(mymap);
+        marker.bindPopup("C2-GE-08_E_EB_at_54th_St");
+        
+        var marker = L.marker([40.769126, -73.98858]).addTo(mymap);
+        marker.bindPopup("10 Ave @ 57 St");
+        
+        var marker = L.marker([40.70502, -73.989161]).addTo(mymap);
+        marker.bindPopup("MHB-26 BKLYN N UPRDW @ TWR - Bikeway");
+        
+        var marker = L.marker([40.852383, -73.941088]).addTo(mymap);
+        marker.bindPopup("Riverside DR. @ Pedestrian Crossing NOF 181 St");
+        
+        var marker = L.marker([40.738762, -73.901557]).addTo(mymap);
+        marker.bindPopup("BQE @ Queens Blvd");
+        
+        var marker = L.marker([40.760433, -73.861412]).addTo(mymap);
+        marker.bindPopup("Astoria Blvd @ 108 St");
+        
+        var marker = L.marker([40.77234, -73.9587]).addTo(mymap);
+        marker.bindPopup("3 AVE @ 76 St");
+        
+        var marker = L.marker([40.701756, -73.80795]).addTo(mymap);
+        marker.bindPopup("Jamaica Ave @ Sutphin Blvd");
+        
+        var marker = L.marker([40.849349, -73.93894]).addTo(mymap);
+        marker.bindPopup("Ft Washington @ 179 St");
+        
+        var marker = L.marker([40.800325, -73.958392]).addTo(mymap);
+        marker.bindPopup("CPW @ 110 St");
+        
+        var marker = L.marker([40.8408595069056, -73.9391469955444]).addTo(mymap);
+        marker.bindPopup("Broadway @ 169 Street");
+        
+        var marker = L.marker([40.7755, -73.9502]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 84 St");
+        
+        var marker = L.marker([40.701797, -74.010764]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ BPU Entrance");
+        
+        var marker = L.marker([40.70858, -74.0153]).addTo(mymap);
+        marker.bindPopup("West street underpass entrance");
+        
+        var marker = L.marker([40.692174, -73.98913]).addTo(mymap);
+        marker.bindPopup("Boerum Pl @ Fulton St & Joralemon St");
+        
+        var marker = L.marker([40.672796, -73.969278]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Eastern Pkwy");
+        
+        var marker = L.marker([40.625094, -74.148789]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Forest Ave");
+        
+        var marker = L.marker([40.712361, -73.993504]).addTo(mymap);
+        marker.bindPopup("MHB-17 Manh LRW @ X OVER");
+        
+        var marker = L.marker([40.7701093245849, -73.9171314239502]).addTo(mymap);
+        marker.bindPopup("GCP @ 31 ST");
+        
+        var marker = L.marker([40.757685, -73.793017]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Utopia Pkwy");
+        
+        var marker = L.marker([40.86616, -73.894213]).addTo(mymap);
+        marker.bindPopup("Grand Concourse @ East Kingsbridge");
+        
+        var marker = L.marker([40.687106, -73.97967]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave Bet. 3 Ave & Fulton St");
+        
+        var marker = L.marker([40.713276, -74.009276]).addTo(mymap);
+        marker.bindPopup("Church St @ Park Pl");
+        
+        var marker = L.marker([40.708647, -73.999962]).addTo(mymap);
+        marker.bindPopup("BB-16 South Rdwy @ Manhattan Anchorage");
+        
+        var marker = L.marker([40.764641, -73.82347]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Parsons Blvd");
+        
+        var marker = L.marker([40.743316, -73.921505]).addTo(mymap);
+        marker.bindPopup("Queens Blvd E/B @ 43 St");
+        
+        var marker = L.marker([40.828115, -73.931447]).addTo(mymap);
+        marker.bindPopup("Macombs Dam Bridge");
+        
+        var marker = L.marker([40.710974, -74.003631]).addTo(mymap);
+        marker.bindPopup("BB - Ramp from Pearl St - 156.104");
+        
+        var marker = L.marker([40.715924, -73.961926]).addTo(mymap);
+        marker.bindPopup("Metropolitan Ave @ Berry St");
+        
+        var marker = L.marker([40.751127, -73.742662]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ West Alley Rd");
+        
+        var marker = L.marker([40.608, -74.1575]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Morani St-131.26");
+        
+        var marker = L.marker([40.6253, -74.1779]).addTo(mymap);
+        marker.bindPopup("Staten Island Expy @ Forest Ave ");
+        
+        var marker = L.marker([40.719913, -73.785009]).addTo(mymap);
+        marker.bindPopup("Grand Central Pkwy @ Midland Pkwy - 62.138");
+        
+        var marker = L.marker([40.84549, -73.825543]).addTo(mymap);
+        marker.bindPopup("C1-BRE-10-NB_at_Middle_Twn_Rd-Ex7C");
+        
+        var marker = L.marker([40.674354, -73.801268]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Van Wyck Expy E S/R");
+        
+        var marker = L.marker([40.8019529918652, -73.9333963394165]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 125 St");
+        
+        var marker = L.marker([40.824129, -73.9087]).addTo(mymap);
+        marker.bindPopup("3 Ave @ E 163 St");
+        
+        var marker = L.marker([40.705039, -73.989502]).addTo(mymap);
+        marker.bindPopup("MHB-29 Brklyn S URDWY @ Twr");
+        
+        var marker = L.marker([40.7643348872061, -73.9772018595711]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 57 St");
+        
+        var marker = L.marker([40.8839, -73.8259]).addTo(mymap);
+        marker.bindPopup("NE Thruway @ Conner St");
+        
+        var marker = L.marker([40.699961, -73.986828]).addTo(mymap);
+        marker.bindPopup("Sands St @ Brooklyn Bridge Ent");
+        
+        var marker = L.marker([40.690208, -73.99431]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Clinton ST");
+        
+        var marker = L.marker([40.730072, -73.86235]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ 63 Dr");
+        
+        var marker = L.marker([40.701095, -73.96085]).addTo(mymap);
+        marker.bindPopup("Wythe Ave @ Williamsburg st E");
+        
+        var marker = L.marker([40.7286, -74.005356]).addTo(mymap);
+        marker.bindPopup("West Houston @ Varick St");
+        
+        var marker = L.marker([40.746196, -73.976871]).addTo(mymap);
+        marker.bindPopup("Queens Midtown Tunnel @ 35 St exit");
+        
+        var marker = L.marker([40.76648, -73.89041]).addTo(mymap);
+        marker.bindPopup("Grand Central Pkwy NSR @ 79 St");
+        
+        var marker = L.marker([40.633783, -73.889428]).addTo(mymap);
+        marker.bindPopup("Rockaway Pkwy @ Seaview Ave");
+        
+        var marker = L.marker([40.851889, -73.898344]).addTo(mymap);
+        marker.bindPopup("Webster Ave @ E 180 St");
+        
+        var marker = L.marker([40.829275, -73.928693]).addTo(mymap);
+        marker.bindPopup("Macombs Dam Bridge @ E 161 St");
+        
+        var marker = L.marker([40.786516, -73.952456]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 96 St");
+        
+        var marker = L.marker([40.770142, -73.957381]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 74 St");
+        
+        var marker = L.marker([40.71592, -73.807822]).addTo(mymap);
+        marker.bindPopup("Grand Central Pkwy @ Parson Blvd - 102.50");
+        
+        var marker = L.marker([40.849657, -73.933675]).addTo(mymap);
+        marker.bindPopup("St Nicholas Ave @ 181 St");
+        
+        var marker = L.marker([40.732725, -73.8692]).addTo(mymap);
+        marker.bindPopup("C5-LIE-15-WB_at_Queens_Blvd-Ex19");
+        
+        var marker = L.marker([40.668793, -73.842395]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ N. Conduit Ave");
+        
+        var marker = L.marker([40.868476, -73.832667]).addTo(mymap);
+        marker.bindPopup("New Eng Thru @ Bartow");
+        
+        var marker = L.marker([40.765534775125, -73.9800400250842]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 57 St");
+        
+        var marker = L.marker([40.808367, -73.934622]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 131 ST (3 Ave Br)");
+        
+        var marker = L.marker([40.598651, -73.766059]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @B 32 St");
+        
+        var marker = L.marker([40.578916, -74.190673]).addTo(mymap);
+        marker.bindPopup("C3-WSE-07-NB_at_Frsh_Kills_Crk-Ex5");
+        
+        var marker = L.marker([40.720287, -73.865571]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Furmanville Ave");
+        
+        var marker = L.marker([40.758099, -73.899761]).addTo(mymap);
+        marker.bindPopup("C5-BQE-44-Med_at_31st_Ave-Ex41");
+        
+        var marker = L.marker([40.7335677903411, -73.8693237304687]).addTo(mymap);
+        marker.bindPopup("Qns Blvd @ QnCnt Mall");
+        
+        var marker = L.marker([40.81857, -73.927322]).addTo(mymap);
+        marker.bindPopup("Grand Concourse @ E 149 St");
+        
+        var marker = L.marker([40.611387, -74.11665]).addTo(mymap);
+        marker.bindPopup("Staten Island Expy @ Slosson Ave");
+        
+        var marker = L.marker([40.525714, -74.230356]).addTo(mymap);
+        marker.bindPopup("Outerbridge Crossing @ Tyrellan Ave");
+        
+        var marker = L.marker([40.7616760477179, -73.9865807566069]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 49 St");
+        
+        var marker = L.marker([40.7470836952846, -73.9813565896605]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 34 St");
+        
+        var marker = L.marker([40.841586, -73.888508]).addTo(mymap);
+        marker.bindPopup("Marmion Av. @ Cross Bronx Expwy");
+        
+        var marker = L.marker([40.739234, -73.815061]).addTo(mymap);
+        marker.bindPopup("Kissena Blvd @ LIE N S/R");
+        
+        var marker = L.marker([40.605488, -74.076704]).addTo(mymap);
+        marker.bindPopup("Narrows Rd South @ Hylan Blvd");
+        
+        var marker = L.marker([40.643693, -73.900847]).addTo(mymap);
+        marker.bindPopup("Rockaway Pkwy @ Flatlands Ave");
+        
+        var marker = L.marker([40.8732637, -73.9058863]).addTo(mymap);
+        marker.bindPopup("Major Deegan Expwy @ 225 St");
+        
+        var marker = L.marker([40.758722, -73.98536]).addTo(mymap);
+        marker.bindPopup("Broadway @ 46 St- Quad North");
+        
+        var marker = L.marker([40.691214327643, -73.9822340011596]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Willoughby");
+        
+        var marker = L.marker([40.6832090346707, -73.9769983291626]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave and Atlantic Ave");
+        
+        var marker = L.marker([40.743034, -73.934624]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Van Dam");
+        
+        var marker = L.marker([40.769719307503, -73.9620208740234]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 72 St");
+        
+        var marker = L.marker([40.7558782935853, -73.972833819289]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 49 St");
+        
+        var marker = L.marker([40.772441, -73.978751]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 66 St");
+        
+        var marker = L.marker([40.699385, -73.983921]).addTo(mymap);
+        marker.bindPopup("C2-BQE-16-WB_at_Sands_St-Ex29A");
+        
+        var marker = L.marker([40.621422, -74.16926]).addTo(mymap);
+        marker.bindPopup("C3-SIE-03-WB_at_South_Ave-Ex5");
+        
+        var marker = L.marker([40.759784, -73.856583]).addTo(mymap);
+        marker.bindPopup("C5-GCP-07-EB_at_Ditmars_Blvd-Ex9");
+        
+        var marker = L.marker([40.660049, -73.986988]).addTo(mymap);
+        marker.bindPopup("C2-PE-05-Ctr_at_7th_Ave-Ex4");
+        
+        var marker = L.marker([40.669085, -73.997168]).addTo(mymap);
+        marker.bindPopup("Hamilton Ave @ Hamilton PL @ 15 St (S SR)");
+        
+        var marker = L.marker([40.897282, -73.879845]).addTo(mymap);
+        marker.bindPopup("C1-MDE-15-NB_at_Jerome_Ave-Ex13");
+        
+        var marker = L.marker([40.762638, -73.804617]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 161 St");
+        
+        var marker = L.marker([40.632889, -73.947672]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Nostrand Ave");
+        
+        var marker = L.marker([40.752967, -73.910238]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 51 St");
+        
+        var marker = L.marker([40.589356, -73.815578]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @B 90 St");
+        
+        var marker = L.marker([40.704168, -73.815211]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Hillside Ave");
+        
+        var marker = L.marker([40.606261, -74.077786]).addTo(mymap);
+        marker.bindPopup("Staten Island Expy @ Hylan Blvd");
+        
+        var marker = L.marker([40.7521973661027, -73.9934562042021]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 34 St");
+        
+        var marker = L.marker([40.7562948244548, -74.0045070648193]).addTo(mymap);
+        marker.bindPopup("12 Ave @ 34 St");
+        
+        var marker = L.marker([40.614885, -74.157435]).addTo(mymap);
+        marker.bindPopup("SIE @ Richmond Ave");
+        
+        var marker = L.marker([40.677393, -73.982988]).addTo(mymap);
+        marker.bindPopup("4 Ave @ Union St - 66.130");
+        
+        var marker = L.marker([40.701797, -74.011144]).addTo(mymap);
+        marker.bindPopup("South St @ Broad St");
+        
+        var marker = L.marker([40.726958, -73.999928]).addTo(mymap);
+        marker.bindPopup("West Broadway @ West Houston St");
+        
+        var marker = L.marker([40.715694, -73.729213]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ 100 Ave");
+        
+        var marker = L.marker([40.72147, -73.9974]).addTo(mymap);
+        marker.bindPopup("Kenmare St @ Cleveland pl");
+        
+        var marker = L.marker([40.612239, -74.180319]).addTo(mymap);
+        marker.bindPopup("C3-WSE-12-NB_at_Bloomfield_Ave_Ex9");
+        
+        var marker = L.marker([40.7465085991952, -74.001366842392]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 23 St");
+        
+        var marker = L.marker([40.844781, -73.920574]).addTo(mymap);
+        marker.bindPopup("C1-CBE-03_N_NB_at_Nelson_Ave-Ex02A");
+        
+        var marker = L.marker([40.549932, -74.150849]).addTo(mymap);
+        marker.bindPopup("Amboy Rd @ Nelson Ave");
+        
+        var marker = L.marker([40.64076309, -74.02182521]).addTo(mymap);
+        marker.bindPopup("C2-GE-07-WB_at_63rd_St");
+        
+        var marker = L.marker([40.631138, -74.146937]).addTo(mymap);
+        marker.bindPopup("Morningstar Rd @ Walker St");
+        
+        var marker = L.marker([40.687257, -73.999876]).addTo(mymap);
+        marker.bindPopup("BQE @ Kane St");
+        
+        var marker = L.marker([40.75851, -73.9888]).addTo(mymap);
+        marker.bindPopup("8 AVE @ 44 St");
+        
+        var marker = L.marker([40.595264, -74.062772]).addTo(mymap);
+        marker.bindPopup("Father Capodanno Blvd @ Ocean Ave");
+        
+        var marker = L.marker([40.689844, -73.850149]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ 91 ave");
+        
+        var marker = L.marker([40.684051, -74.001538]).addTo(mymap);
+        marker.bindPopup("C2-BQE-02_WB_at_Union_St-Ex26");
+        
+        var marker = L.marker([40.703392, -73.99335]).addTo(mymap);
+        marker.bindPopup("BB-66 North Rdwy @ Above Water St/Bklyn");
+        
+        var marker = L.marker([40.759324, -73.95905]).addTo(mymap);
+        marker.bindPopup("YORK AVENUE @ EAST 60 STREET");
+        
+        var marker = L.marker([40.604846, -74.065641]).addTo(mymap);
+        marker.bindPopup("Lily Pond Ave @ School Rd");
+        
+        var marker = L.marker([40.591079, -73.965347]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Ave X");
+        
+        var marker = L.marker([40.840532, -73.886229]).addTo(mymap);
+        marker.bindPopup("Southern Bl. @ Cross Bronx Expwy");
+        
+        var marker = L.marker([40.742627, -73.914056]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ 51 St");
+        
+        var marker = L.marker([40.76687, -73.9538]).addTo(mymap);
+        marker.bindPopup("York Ave @ 72 St");
+        
+        var marker = L.marker([40.714251, -73.931525]).addTo(mymap);
+        marker.bindPopup("Metropolitan Ave @ Grand St");
+        
+        var marker = L.marker([40.700056, -73.987778]).addTo(mymap);
+        marker.bindPopup("Sands St @ Pearl St - quad - ptz - 1.10");
+        
+        var marker = L.marker([40.607272, -73.961707]).addTo(mymap);
+        marker.bindPopup("Coney Island Ave @ Kings Hwy");
+        
+        var marker = L.marker([40.708195, -73.999305]).addTo(mymap);
+        marker.bindPopup("Br Br-19 N Rdwy @ FDR Dr");
+        
+        var marker = L.marker([40.61544, -74.157459]).addTo(mymap);
+        marker.bindPopup("C3-SIE-04A-WB_at_Richmond Ave");
+        
+        var marker = L.marker([40.712875, -73.9700304]).addTo(mymap);
+        marker.bindPopup("WBB #25 SIR 4 @ Bklyn Twr");
+        
+        var marker = L.marker([40.718557, -73.988199]).addTo(mymap);
+        marker.bindPopup("Delancy St @ Essex St");
+        
+        var marker = L.marker([40.780144, -73.953037]).addTo(mymap);
+        marker.bindPopup("3 Ave @ E 88 St");
+        
+        var marker = L.marker([40.5902, -73.900803]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Aviator Sports & Golf Club");
+        
+        var marker = L.marker([40.820458, -73.936233]).addTo(mymap);
+        marker.bindPopup("Malcom X Blvd @ 145 St");
+        
+        var marker = L.marker([40.761861, -73.985123]).addTo(mymap);
+        marker.bindPopup("50 St Btwn 8 Ave & Broadway");
+        
+        var marker = L.marker([40.836506, -73.873027]).addTo(mymap);
+        marker.bindPopup("C1-CBE-10-SB_at_Brx.Rvr_Pkwy-Ex4A");
+        
+        var marker = L.marker([40.568875, -74.191035]).addTo(mymap);
+        marker.bindPopup("C3-WSE-06-NB_at_Muldoon_Ave-Ex5");
+        
+        var marker = L.marker([40.7589811180163, -73.9939438000961]).addTo(mymap);
+        marker.bindPopup("Dyer Ave @ 42 Street");
+        
+        var marker = L.marker([40.81575, -73.9585]).addTo(mymap);
+        marker.bindPopup("Broadway @ 125 St");
+        
+        var marker = L.marker([40.759281077223, -73.9808977882913]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 49 St");
+        
+        var marker = L.marker([40.757839, -73.979362]).addTo(mymap);
+        marker.bindPopup("Rockefeller Plz @ 48 St (between 5 Ave and 6 Ave)");
+        
+        var marker = L.marker([40.712078, -74.010108]).addTo(mymap);
+        marker.bindPopup("Church Street @ Vesey");
+        
+        var marker = L.marker([40.732548, -73.924803]).addTo(mymap);
+        marker.bindPopup("C5-BQE-31-EB_at_54th_Ave");
+        
+        var marker = L.marker([40.662511, -73.840815]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ 157 Ave");
+        
+        var marker = L.marker([40.54655, -74.18044]).addTo(mymap);
+        marker.bindPopup("Drumgoole Rd E @ Arden Ave - quad - Ptz - 1.130");
+        
+        var marker = L.marker([40.762708, -73.961589]).addTo(mymap);
+        marker.bindPopup("E 63 St @ QBB");
+        
+        var marker = L.marker([40.758692, -73.985371]).addTo(mymap);
+        marker.bindPopup("Broadway @ 46 St- Quad South");
+        
+        var marker = L.marker([40.760716, -73.73183]).addTo(mymap);
+        marker.bindPopup("LIE @ Marathon Pkwy");
+        
+        var marker = L.marker([40.7395059171263, -73.9847405603646]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 23 St");
+        
+        var marker = L.marker([40.714316, -73.830834]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Union TPKE");
+        
+        var marker = L.marker([40.7208548134741, -74.0006551782388]).addTo(mymap);
+        marker.bindPopup("Grand St @ Broadway");
+        
+        var marker = L.marker([40.70561, -73.8582]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Union Tpke");
+        
+        var marker = L.marker([40.8219936715493, -73.9572572708129]).addTo(mymap);
+        marker.bindPopup("Henry Hudson @ 137 St");
+        
+        var marker = L.marker([40.704515, -74.016696]).addTo(mymap);
+        marker.bindPopup("2nd Camera South Bound BPU-148.57");
+        
+        var marker = L.marker([40.81961, -73.9342]).addTo(mymap);
+        marker.bindPopup("FDR @ 145 St");
+        
+        var marker = L.marker([40.690593, -73.918328]).addTo(mymap);
+        marker.bindPopup("Bushwick Ave @ Gates Ave");
+        
+        var marker = L.marker([40.570789, -74.090294]).addTo(mymap);
+        marker.bindPopup("Father Capodanno Blvd @ Midland Ave");
+        
+        var marker = L.marker([40.639889, -74.036124]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ 68 St");
+        
+        var marker = L.marker([40.820328, -73.913069]).addTo(mymap);
+        marker.bindPopup("3rd Av. @ E 156 St.");
+        
+        var marker = L.marker([40.7592529942977, -73.9646816253662]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 58 St");
+        
+        var marker = L.marker([40.744001, -73.837011]).addTo(mymap);
+        marker.bindPopup("LIE @ College Point Blvd");
+        
+        var marker = L.marker([40.74148, -73.9509]).addTo(mymap);
+        marker.bindPopup("Long Island Expy @ QMT @ Pulaski Br");
+        
+        var marker = L.marker([40.741099, -73.9343]).addTo(mymap);
+        marker.bindPopup("Van Dam St @ 48 Ave");
+        
+        var marker = L.marker([40.74848, -73.8961]).addTo(mymap);
+        marker.bindPopup("BQE @ BROADWAY (37 Ave)");
+        
+        var marker = L.marker([40.64076393, -74.02182574]).addTo(mymap);
+        marker.bindPopup("C2-GE-06-WB_at_63rd_St");
+        
+        var marker = L.marker([40.77962, -73.9556]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 86 St");
+        
+        var marker = L.marker([40.6264, -74.0178]).addTo(mymap);
+        marker.bindPopup("7 Ave NB @ Bay Ridge Pkwy");
+        
+        var marker = L.marker([40.720839, -73.944951]).addTo(mymap);
+        marker.bindPopup("McGuinness Blvd @ Bayard St");
+        
+        var marker = L.marker([40.56106, -74.17012]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Arthur Kill Rd - quad - ptz - 141.131");
+        
+        var marker = L.marker([40.6828835959178, -73.7264585494995]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Cross Island Split");
+        
+        var marker = L.marker([40.84102, -73.9446]).addTo(mymap);
+        marker.bindPopup("Riverside Dr @ W 165 St");
+        
+        var marker = L.marker([40.766599, -73.950845]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 73 St");
+        
+        var marker = L.marker([40.672744, -73.968781]).addTo(mymap);
+        marker.bindPopup("Grand Army Plaza");
+        
+        var marker = L.marker([40.590118, -74.193442]).addTo(mymap);
+        marker.bindPopup("West Shore Expy @ Victory Blvd");
+        
+        var marker = L.marker([40.605697, -73.966819]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Kings Hwy");
+        
+        var marker = L.marker([40.52793, -74.21655]).addTo(mymap);
+        marker.bindPopup("Drumgoole Rd E @ Bloomingdale Rd - quad - ptz - 143.26");
+        
+        var marker = L.marker([40.712024, -73.940835]).addTo(mymap);
+        marker.bindPopup("Grand St @ Bushwick Ave");
+        
+        var marker = L.marker([40.7628734544829, -73.9894306186342]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 49 St");
+        
+        var marker = L.marker([40.831378, -73.900286]).addTo(mymap);
+        marker.bindPopup("Boston Rd. @ E 169 St");
+        
+        var marker = L.marker([40.753647, -73.914468]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 48 St");
+        
+        var marker = L.marker([40.710823, -73.727495]).addTo(mymap);
+        marker.bindPopup("Hempstead Ave @ Cross Island Pkwy (PTZ)");
+        
+        var marker = L.marker([40.730514, -73.951543]).addTo(mymap);
+        marker.bindPopup("McGuinness Blvd @ Greenpoint Ave");
+        
+        var marker = L.marker([40.756691, -73.986476]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 43 St");
+        
+        var marker = L.marker([40.75856, -73.9772]).addTo(mymap);
+        marker.bindPopup("5 AVE @ 50 St");
+        
+        var marker = L.marker([40.7715393676332, -73.9669132232666]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 72 St");
+        
+        var marker = L.marker([40.728348, -74.002878]).addTo(mymap);
+        marker.bindPopup("6 Ave @ West Houston St");
+        
+        var marker = L.marker([40.760288, -73.769377]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Bell Blvd");
+        
+        var marker = L.marker([40.758711, -73.985366]).addTo(mymap);
+        marker.bindPopup("Broadway @ 46 Street");
+        
+        var marker = L.marker([40.764773, -73.894705]).addTo(mymap);
+        marker.bindPopup("C5-BQE-45-EB_at_GCP-Astoria_Blvd");
+        
+        var marker = L.marker([40.656274, -73.767364]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Guy Brewer Blvd");
+        
+        var marker = L.marker([40.5597539508553, -74.1993856430053]).addTo(mymap);
+        marker.bindPopup("West Shore Expy @ Arden Ave");
+        
+        var marker = L.marker([40.630779, -74.145543]).addTo(mymap);
+        marker.bindPopup("C3-MLK-03_NB_at_Walkr_St-Bayonne_Br");
+        
+        var marker = L.marker([40.721099, -73.835199]).addTo(mymap);
+        marker.bindPopup("C5-GCP-13-EB_at_72nd_Rd-Ex11");
+        
+        var marker = L.marker([40.733178, -73.870783]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Hoffman Dr");
+        
+        var marker = L.marker([40.783304, -73.944662]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 96 St");
+        
+        var marker = L.marker([40.554668, -74.213079]).addTo(mymap);
+        marker.bindPopup("West Shore Expy @ Rossville Ave");
+        
+        var marker = L.marker([40.701667, -73.961476]).addTo(mymap);
+        marker.bindPopup("Wythe Ave @ Williamsburg st w");
+        
+        var marker = L.marker([40.713306, -73.735855]).addTo(mymap);
+        marker.bindPopup("Hempstead Ave @ Springfield Ave");
+        
+        var marker = L.marker([40.696346, -73.988845]).addTo(mymap);
+        marker.bindPopup("Adams St @ Tillary St");
+        
+        var marker = L.marker([40.606337, -74.031758]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Verrazano Bridge");
+        
+        var marker = L.marker([40.630008, -73.886455]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Rockaway Parkway ");
+        
+        var marker = L.marker([40.750793, -73.750526]).addTo(mymap);
+        marker.bindPopup("Long Island Expy @ Exit 29");
+        
+        var marker = L.marker([40.705954, -73.996802]).addTo(mymap);
+        marker.bindPopup("BB- 42 South Rdwy @ Bridge Midspan");
+        
+        var marker = L.marker([40.84833, -73.930868]).addTo(mymap);
+        marker.bindPopup("Amsterdam Ave @ 181 St");
+        
+        var marker = L.marker([40.778737, -73.953921]).addTo(mymap);
+        marker.bindPopup("3 Ave @ E 86 St");
+        
+        var marker = L.marker([40.7460850794673, -73.9749605630373]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 36 St-Midtown Tunnel");
+        
+        var marker = L.marker([40.710893, -73.727435]).addTo(mymap);
+        marker.bindPopup("Hempstead Ave @ Cross Island Pkwy (Quad)");
+        
+        var marker = L.marker([40.760252895987, -73.967542473241]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 57 St");
+        
+        var marker = L.marker([40.737876, -73.980926]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 23 St");
+        
+        var marker = L.marker([40.766969, -73.982265]).addTo(mymap);
+        marker.bindPopup("8 Ave @ Columbus Cr South");
+        
+        var marker = L.marker([40.70461, -74.0142]).addTo(mymap);
+        marker.bindPopup("Broadway @ Battery pl");
+        
+        var marker = L.marker([40.715955, -73.8263]).addTo(mymap);
+        marker.bindPopup("C5-VWE-25-NB_at_GCP-Intr.-Ex14");
+        
+        var marker = L.marker([40.74516675, -73.76996066]).addTo(mymap);
+        marker.bindPopup("C5-LIE-27-WB_at_Clearview_Exwy-Ex27");
+        
+        var marker = L.marker([40.708814, -73.991511]).addTo(mymap);
+        marker.bindPopup("MHB-23 Manh LRDWY @ Twr");
+        
+        var marker = L.marker([40.7552116061846, -73.9712421172846]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 49 St");
+        
+        var marker = L.marker([40.610089, -74.105929]).addTo(mymap);
+        marker.bindPopup("C3-SIE-09-EB_at_ Manor_Rd");
+        
+        var marker = L.marker([40.691006, -73.99784]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Hicks Ave - quad - 165.203");
+        
+        var marker = L.marker([40.7565, -73.994]).addTo(mymap);
+        marker.bindPopup("9 Ave @ W 39 St");
+        
+        var marker = L.marker([40.705626, -73.9962]).addTo(mymap);
+        marker.bindPopup("BB-43 North Rdwy @ Center Expansion Jt");
+        
+        var marker = L.marker([40.8575452886721, -73.8840866088867]).addTo(mymap);
+        marker.bindPopup("Fordham Rd @ Hughes Ave");
+        
+        var marker = L.marker([40.701517, -73.988836]).addTo(mymap);
+        marker.bindPopup("C2-BQE-15-WB_at_Adams_St-Ex28B");
+        
+        var marker = L.marker([40.621403, -74.022062]).addTo(mymap);
+        marker.bindPopup("C2-GE-02-WB_at_Ft_Hmiltn_Pkwy-Ex19");
+        
+        var marker = L.marker([40.730175, -73.991076]).addTo(mymap);
+        marker.bindPopup("E 8 St @ Lafayette St");
+        
+        var marker = L.marker([40.61998, -73.8257]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ Wildlife Refuge");
+        
+        var marker = L.marker([40.7498342023994, -73.9722170340956]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 42 St");
+        
+        var marker = L.marker([40.60728, -74.16261]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Richmond Ave - quad - ptz - 130.146");
+        
+        var marker = L.marker([40.700756, -73.990942]).addTo(mymap);
+        marker.bindPopup("Cadman Plz W @ Prospect St - quad - 1.3");
+        
+        var marker = L.marker([40.759067, -73.97261]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 53 St");
+        
+        var marker = L.marker([40.585808, -73.823158]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @B 101 St");
+        
+        var marker = L.marker([40.61405, -74.066176]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Bay St");
+        
+        var marker = L.marker([40.700757, -73.991042]).addTo(mymap);
+        marker.bindPopup("Old Fulton St @ Prospect St");
+        
+        var marker = L.marker([40.7453108515355, -73.9984918259082]).addTo(mymap);
+        marker.bindPopup("8th Ave @ 23 St");
+        
+        var marker = L.marker([40.757824, -73.861028]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 108 St");
+        
+        var marker = L.marker([40.716139, -73.996063]).addTo(mymap);
+        marker.bindPopup("MHB-18 Manh LRW @ EOF X Over");
+        
+        var marker = L.marker([40.7167229317414, -73.9891582366234]).addTo(mymap);
+        marker.bindPopup("Grand St @ Essex St");
+        
+        var marker = L.marker([40.704129, -73.994275]).addTo(mymap);
+        marker.bindPopup("BB-53 North East Brooklyn Tower");
+        
+        var marker = L.marker([40.708446, -73.998459]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ Brooklyn Bridge Exit NB");
+        
+        var marker = L.marker([40.768651, -73.969814]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 66 St");
+        
+        var marker = L.marker([40.624655, -74.146146]).addTo(mymap);
+        marker.bindPopup("C3-MLK-02-NB_at_Forest_Ave-Ex11");
+        
+        var marker = L.marker([40.700743, -73.989736]).addTo(mymap);
+        marker.bindPopup("Cadman Plz E/Washington St @ Prospect St");
+        
+        var marker = L.marker([40.69810439, -73.9628506]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ Williamsburg W St");
+        
+        var marker = L.marker([40.714325, -73.9748335]).addTo(mymap);
+        marker.bindPopup("WBB SIR -2 @ Manhattan Mid Span");
+        
+        var marker = L.marker([40.701936, -73.992574]).addTo(mymap);
+        marker.bindPopup("Old Fulton @ Vine St @ Hicks St");
+        
+        var marker = L.marker([40.609433, -74.090081]).addTo(mymap);
+        marker.bindPopup("Narrow Rd N @ Richmond Rd");
+        
+        var marker = L.marker([40.703912, -73.994062]).addTo(mymap);
+        marker.bindPopup("BB-63 North Rdwy@ Bklyn Twr East");
+        
+        var marker = L.marker([40.725925, -74.009506]).addTo(mymap);
+        marker.bindPopup("Holland Tunnel");
+        
+        var marker = L.marker([40.717382, -73.991308]).addTo(mymap);
+        marker.bindPopup("Grand St @ Allen St");
+        
+        var marker = L.marker([40.706251, -74.014347]).addTo(mymap);
+        marker.bindPopup("Manhattan BBT Entrance");
+        
+        var marker = L.marker([40.844403, -73.925012]).addTo(mymap);
+        marker.bindPopup("Under Cliff Ave @ Boscobe Pl");
+        
+        var marker = L.marker([40.697565, -73.985248]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Concord St");
+        
+        var marker = L.marker([40.761615778381, -73.9707524905279]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 57 St");
+        
+        var marker = L.marker([40.766534, -73.780961]).addTo(mymap);
+        marker.bindPopup("Clearview Expy @ 35 St");
+        
+        var marker = L.marker([40.7588, -73.9976]).addTo(mymap);
+        marker.bindPopup("Galvin Ave @ W 40 St");
+        
+        var marker = L.marker([40.525433, -74.230189]).addTo(mymap);
+        marker.bindPopup("C3-KWV-01-NB_at_Tyrllan_Ave-Outrbr");
+        
+        var marker = L.marker([40.56147, -74.17178]).addTo(mymap);
+        marker.bindPopup("Drumgoole Rd West @ Arthur Kill Rd - quad - ptz -141.59");
+        
+        var marker = L.marker([40.644933, -73.974359]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Church Ave");
+        
+        var marker = L.marker([40.7679306900999, -73.9857235137761]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 57 St");
+        
+        var marker = L.marker([40.826849, -73.922609]).addTo(mymap);
+        marker.bindPopup("Grand Concourse @ 161 St");
+        
+        var marker = L.marker([40.702317, -73.727481]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ 113 Ave");
+        
+        var marker = L.marker([40.84897, -73.827533]).addTo(mymap);
+        marker.bindPopup("C1-BRE-11-SB_at_Buhre_Ave-Ex8A");
+        
+        var marker = L.marker([40.72395, -73.937599]).addTo(mymap);
+        marker.bindPopup("BQE @ Vander Voort Ave");
+        
+        var marker = L.marker([40.8207270979196, -73.9388036727905]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 145 St");
+        
+        var marker = L.marker([40.71451, -73.974772]).addTo(mymap);
+        marker.bindPopup("WBB-23 Manhattan Tower North");
+        
+        var marker = L.marker([40.699916, -73.98621]).addTo(mymap);
+        marker.bindPopup("Sands St @ BQE Ent");
+        
+        var marker = L.marker([40.733128, -73.835773]).addTo(mymap);
+        marker.bindPopup("C5-VWE-28-SB_at_67th_Rd-Ex11");
+        
+        var marker = L.marker([40.87857, -73.884785]).addTo(mymap);
+        marker.bindPopup("Grand Concourse @ Moshulu Pkwy ");
+        
+        var marker = L.marker([40.680209, -73.753356]).addTo(mymap);
+        marker.bindPopup("Springfield Blvd @ Merrick Blvd");
+        
+        var marker = L.marker([40.577965, -74.102264]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Midland Ave");
+        
+        var marker = L.marker([40.698327, -73.980586]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ Navy St");
+        
+        var marker = L.marker([40.77304, -73.9603]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 76 St");
+        
+        var marker = L.marker([40.7873652885455, -73.8159799575805]).addTo(mymap);
+        marker.bindPopup("Cross Island Expy @ 14 Ave");
+        
+        var marker = L.marker([40.719108, -73.99043]).addTo(mymap);
+        marker.bindPopup("Allen St @ Delancey St (B)");
+        
+        var marker = L.marker([40.75224, -73.9391]).addTo(mymap);
+        marker.bindPopup("Crescent st @ 41 Ave");
+        
+        var marker = L.marker([40.603647, -74.069355]).addTo(mymap);
+        marker.bindPopup("Narrows Rd South @ Fingerboard Rd");
+        
+        var marker = L.marker([40.702389, -74.012806]).addTo(mymap);
+        marker.bindPopup("Water St @ Whitehall");
+        
+        var marker = L.marker([40.786661, -73.793472]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ Clearview Expy");
+        
+        var marker = L.marker([40.57093, -74.169764]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Forest Hills Rd");
+        
+        var marker = L.marker([40.7489478, -73.9373769]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Jackson Ave");
+        
+        var marker = L.marker([40.75692, -73.73928]).addTo(mymap);
+        marker.bindPopup("Long Island Expy @ Douglaston Pkwy");
+        
+        var marker = L.marker([40.763617, -73.981436]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 54 St");
+        
+        var marker = L.marker([40.646969, -73.974784]).addTo(mymap);
+        marker.bindPopup("C2-PE-01-Cntr_at_Caton_Ave-Ex6");
+        
+        var marker = L.marker([40.701349, -74.012679]).addTo(mymap);
+        marker.bindPopup("1st camera North Bound BPU -148.51");
+        
+        var marker = L.marker([40.602249, -74.18798]).addTo(mymap);
+        marker.bindPopup("C3-WSE-10-SB_at_South_Ave-Ex8");
+        
+        var marker = L.marker([40.752466, -73.924313]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Steinway");
+        
+        var marker = L.marker([40.69755, -73.852925]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Park ln");
+        
+        var marker = L.marker([40.748228, -73.9417]).addTo(mymap);
+        marker.bindPopup("43 Ave @ 27 St");
+        
+        var marker = L.marker([40.684718, -74.001218]).addTo(mymap);
+        marker.bindPopup("C2-BQE-04_WB_at_Sackett_St-Ex26");
+        
+        var marker = L.marker([40.554843, -74.213329]).addTo(mymap);
+        marker.bindPopup("C3-WSE-04-SB_at_Rossville_Ave-Ex4");
+        
+        var marker = L.marker([40.74095, -74.0053]).addTo(mymap);
+        marker.bindPopup("9 AVE @ 14 St");
+        
+        var marker = L.marker([40.761216, -73.957815]).addTo(mymap);
+        marker.bindPopup("York Ave @ 63 St");
+        
+        var marker = L.marker([40.652728, -73.886256]).addTo(mymap);
+        marker.bindPopup("Pennsylvania Ave @ Flatlands Ave");
+        
+        var marker = L.marker([40.754038, -73.97827]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ E 44 St");
+        
+        var marker = L.marker([40.725764, -73.895635]).addTo(mymap);
+        marker.bindPopup("Grand Ave @ LIE");
+        
+        var marker = L.marker([40.705468, -73.794902]).addTo(mymap);
+        marker.bindPopup("Jamaica Ave @ 165 St");
+        
+        var marker = L.marker([40.613168, -73.926315]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Utica Ave");
+        
+        var marker = L.marker([40.6666, -73.8104]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ 130 St");
+        
+        var marker = L.marker([40.7677366852749, -73.9814615249633]).addTo(mymap);
+        marker.bindPopup("Central Park S @ Columbus Cr");
+        
+        var marker = L.marker([40.721091, -73.998074]).addTo(mymap);
+        marker.bindPopup("Broome St and Lafayette St");
+        
+        var marker = L.marker([40.575219, -73.968764]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Surf Av @ Sea Breeze Ave");
+        
+        var marker = L.marker([40.770256, -73.947626]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 79 St");
+        
+        var marker = L.marker([40.748641, -73.895892]).addTo(mymap);
+        marker.bindPopup("BQE E/B Ent. Ramp @ Broadway");
+        
+        var marker = L.marker([40.72231, -73.957447]).addTo(mymap);
+        marker.bindPopup("Wythe Ave @ North 12 St");
+        
+        var marker = L.marker([40.660584, -73.987209]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 18 St");
+        
+        var marker = L.marker([40.747351, -73.8867]).addTo(mymap);
+        marker.bindPopup("Roosevelt Ave @ 79St");
+        
+        var marker = L.marker([40.8109509339364, -73.9343833923339]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 135 Street");
+        
+        var marker = L.marker([40.540946, -74.224364]).addTo(mymap);
+        marker.bindPopup("C3-WSE-02-SB_at_Woodrow_Rd-Ex3");
+        
+        var marker = L.marker([40.692535, -73.999642]).addTo(mymap);
+        marker.bindPopup("C2-BQE-10-WB_at_State_St_UP-Ex27");
+        
+        var marker = L.marker([40.777422, -73.942713]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 90 St");
+        
+        var marker = L.marker([40.534229, -74.153896]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Richmond Ave");
+        
+        var marker = L.marker([40.716182, -73.744776]).addTo(mymap);
+        marker.bindPopup("Hempstead Ave at Jamaica Ave");
+        
+        var marker = L.marker([40.791666, -73.935403]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 111 ST");
+        
+        var marker = L.marker([40.52869, -74.21684]).addTo(mymap);
+        marker.bindPopup("Veterans Rd @ Bloomingdale Rd - quad - ptz - 0.130");
+        
+        var marker = L.marker([40.703795, -73.994062]).addTo(mymap);
+        marker.bindPopup("BB-64 South Rdwy @ Bklyn Twr Side Sapn");
+        
+        var marker = L.marker([40.532368, -74.223617]).addTo(mymap);
+        marker.bindPopup("C3-WSE-01-NB_at_Englewood_Ave-Ex2");
+        
+        var marker = L.marker([40.724979, -73.934058]).addTo(mymap);
+        marker.bindPopup("C2-BQE-30A_W_at_Stewrt_Ave_Kosc-Br");
+        
+        var marker = L.marker([40.69995, -73.996221]).addTo(mymap);
+        marker.bindPopup("C2-BQE-12-WB_at_Furmn_St_LL-Ex28A");
+        
+        var marker = L.marker([40.75994, -73.9805]).addTo(mymap);
+        marker.bindPopup("6 AVE @ 50 St");
+        
+        var marker = L.marker([40.575565, -73.981202]).addTo(mymap);
+        marker.bindPopup("Stillwell Ave @ Surf Ave");
+        
+        var marker = L.marker([40.7051851, -74.0166288]).addTo(mymap);
+        marker.bindPopup("West Side HWY BPU Entrance -148.54");
+        
+        var marker = L.marker([40.609321, -74.150406]).addTo(mymap);
+        marker.bindPopup("C3-SIE-06-EB_at_Victory_Blvd-Ex10");
+        
+        var marker = L.marker([40.603743, -74.069126]).addTo(mymap);
+        marker.bindPopup("C3-SIE-13_EB_at_Mosel_Avenue");
+        
+        var marker = L.marker([40.748246, -74.007727]).addTo(mymap);
+        marker.bindPopup("C4-WST-07-Med_at_W.23rd_St");
+        
+        var marker = L.marker([40.7579183170509, -73.9776717716469]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 49 St");
+        
+        var marker = L.marker([40.738943, -73.815047]).addTo(mymap);
+        marker.bindPopup("LIE @ Kissena Blvd");
+        
+        var marker = L.marker([40.579195, -73.981856]).addTo(mymap);
+        marker.bindPopup("Stillwell Ave @ Neptune Ave");
+        
+        var marker = L.marker([40.74464, -73.94847]).addTo(mymap);
+        marker.bindPopup("Jackson Ave @ 21 St");
+        
+        var marker = L.marker([40.63091, -74.14612]).addTo(mymap);
+        marker.bindPopup("MLK Expy @ Walker St");
+        
+        var marker = L.marker([40.7401688594078, -73.7265014648437]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ Union Tpke");
+        
+        var marker = L.marker([40.788185, -73.790539]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ Throgsneck");
+        
+        var marker = L.marker([40.60879, -74.15355]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Loop Rd -131.42");
+        
+        var marker = L.marker([40.597318, -74.191548]).addTo(mymap);
+        marker.bindPopup("C3-WSE-09-SB_at_Meredith_Blvd-Ex8");
+        
+        var marker = L.marker([40.7151919083982, -73.9945936203003]).addTo(mymap);
+        marker.bindPopup("Canal Street @ Chrystie Street");
+        
+        var marker = L.marker([40.826446, -73.950423]).addTo(mymap);
+        marker.bindPopup("Broadway @ 145 St");
+        
+        var marker = L.marker([40.59277, -73.7981]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @ Beach 69 St");
+        
+        var marker = L.marker([40.74383, -73.926217]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ 39 St - East");
+        
+        var marker = L.marker([40.73865138, -73.80595654]).addTo(mymap);
+        marker.bindPopup("C5-LIE-22-WB_at_163rd_St-Ex25");
+        
+        var marker = L.marker([40.7175537302479, -73.999310720446]).addTo(mymap);
+        marker.bindPopup("Baxter St @ Canal Street");
+        
+        var marker = L.marker([40.598942, -74.072231]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ West Fingerboard Rd & Sand Ln");
+        
+        var marker = L.marker([40.75467, -73.833092]).addTo(mymap);
+        marker.bindPopup("College Point Blvd @ Sanford Ave");
+        
+        var marker = L.marker([40.721009, -73.904092]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ 61 St");
+        
+        var marker = L.marker([40.840259, -73.885677]).addTo(mymap);
+        marker.bindPopup("Crotona Pkwy @ Cross Bronx Expwy");
+        
+        var marker = L.marker([40.603743, -74.069126]).addTo(mymap);
+        marker.bindPopup("C3-SIE-15-EB_at_Fingerboard_Rd_Ex15");
+        
+        var marker = L.marker([40.739299, -73.941697]).addTo(mymap);
+        marker.bindPopup("C5-LIE-02-EB_at_27th_St-Ex15");
+        
+        var marker = L.marker([40.701206, -73.994465]).addTo(mymap);
+        marker.bindPopup("C2-BQE-13_WB_at_Middagh_St-Ex28A");
+        
+        var marker = L.marker([40.710983, -73.963168]).addTo(mymap);
+        marker.bindPopup("WBB - 2 NOR @ ABOVE BEDFORD AVE & S 5 St");
+        
+        var marker = L.marker([40.6163, -74.026827]).addTo(mymap);
+        marker.bindPopup("C2-GE-01-WB_at_92nd_St-Vrrazano_Br");
+        
+        var marker = L.marker([40.724136, -73.973412]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 10 St");
+        
+        var marker = L.marker([40.59785, -73.9655]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Ave U");
+        
+        var marker = L.marker([40.709008, -73.841382]).addTo(mymap);
+        marker.bindPopup("Jackie Robinson Pkwy @ Metropolitan Ave");
+        
+        var marker = L.marker([40.787693, -73.975016]).addTo(mymap);
+        marker.bindPopup("Amsterdam @ 86 St");
+        
+        var marker = L.marker([40.7956179688014, -73.976182937622]).addTo(mymap);
+        marker.bindPopup("Henry Hudson Pkwy @ 96 St");
+        
+        var marker = L.marker([40.71597, -73.986695]).addTo(mymap);
+        marker.bindPopup("Grand St. @ Clinton St");
+        
+        var marker = L.marker([40.799492, -73.955209]).addTo(mymap);
+        marker.bindPopup("Adam C. Powell Blvd @ 110 St/CPN");
+        
+        var marker = L.marker([40.779278, -73.768564]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ Bayside Marina");
+        
+        var marker = L.marker([40.775439328607, -73.7841796875]).addTo(mymap);
+        marker.bindPopup("Clearview Expy @ 26th Ave");
+        
+        var marker = L.marker([40.726696, -73.837873]).addTo(mymap);
+        marker.bindPopup("C5-GCP-12_WB_at_69th_Rd-Ex11");
+        
+        var marker = L.marker([40.840811, -73.825902]).addTo(mymap);
+        marker.bindPopup("C1-BRE-09-SB_at_Lasalle_Ave-Ex7C");
+        
+        var marker = L.marker([40.560385, -74.120024]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Guyon Ave");
+        
+        var marker = L.marker([40.716879, -73.800069]).addTo(mymap);
+        marker.bindPopup("GCP @ 166 St");
+        
+        var marker = L.marker([40.779481, -73.973578]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 77 St");
+        
+        var marker = L.marker([40.761617, -73.822077]).addTo(mymap);
+        marker.bindPopup("Roosevelt Ave @ Parsons Blvd");
+        
+        var marker = L.marker([40.7458, -73.9705]).addTo(mymap);
+        marker.bindPopup("FDR @ 38 St");
+        
+        var marker = L.marker([40.7397525513578, -74.0025212013102]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 14 St");
+        
+        var marker = L.marker([40.703286, -73.99356]).addTo(mymap);
+        marker.bindPopup("BB-68 South Rdwy @ Above Water St/Bklyn");
+        
+        var marker = L.marker([40.519122, -74.197091]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Seguine Ave");
+        
+        var marker = L.marker([40.666593, -73.994958]).addTo(mymap);
+        marker.bindPopup("Prospect Pkwy @ 3 Ave");
+        
+        var marker = L.marker([40.732373, -73.984954]).addTo(mymap);
+        marker.bindPopup("2 Ave @ E 14 St");
+        
+        var marker = L.marker([40.699898, -73.962065]).addTo(mymap);
+        marker.bindPopup("C2-BQE-19-WB_at_Kent_Ave-Ex31");
+        
+        var marker = L.marker([40.606423, -74.077846]).addTo(mymap);
+        marker.bindPopup("C3-SIE-12-WB_Btwn_Clove_Road_and_Richmond_Road");
+        
+        var marker = L.marker([40.8282, -73.9351]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 155 Street");
+        
+        var marker = L.marker([40.71261, -73.9004]).addTo(mymap);
+        marker.bindPopup("Metropolitan Ave @ Fresh Pond Rd");
+        
+        var marker = L.marker([40.667436, -73.766763]).addTo(mymap);
+        marker.bindPopup("Farmers Blvd @ N Conduit Ave");
+        
+        var marker = L.marker([40.636159, -73.972751]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Ditmas Ave");
+        
+        var marker = L.marker([40.6793036647623, -73.974552154541]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave@ 6 Ave");
+        
+        var marker = L.marker([40.8765141, -73.9047832]).addTo(mymap);
+        marker.bindPopup("Major Deegan Expwy @ 230 St");
+        
+        var marker = L.marker([40.731331, -73.982561]).addTo(mymap);
+        marker.bindPopup("1 Ave @ E 14 St");
+        
+        var marker = L.marker([40.712545, -73.834995]).addTo(mymap);
+        marker.bindPopup("Jackie Robinson Pkwy @ burns St");
+        
+        var marker = L.marker([40.727155, -73.991628]).addTo(mymap);
+        marker.bindPopup("Bowery @ Cooper Sq & 4 St");
+        
+        var marker = L.marker([40.824194, -73.913826]).addTo(mymap);
+        marker.bindPopup("Melrose Ave/Webster Ave @ E 161");
+        
+        var marker = L.marker([40.699972, -73.986858]).addTo(mymap);
+        marker.bindPopup("Sands St @ Jay St - quad - 149.27");
+        
+        var marker = L.marker([40.7590599112718, -73.9594663180461]).addTo(mymap);
+        marker.bindPopup("QBB UL CM @ York Ave");
+        
+        var marker = L.marker([40.75632, -73.9777487]).addTo(mymap);
+        marker.bindPopup("47 St Bet. 5 Ave @ Madison Ave- Manhattan");
+        
+        var marker = L.marker([40.67840799, -74.00225295]).addTo(mymap);
+        marker.bindPopup("Hamilton Ave @ Henry St");
+        
+        var marker = L.marker([40.7609271914359, -73.9691468531185]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 57 ST");
+        
+        var marker = L.marker([40.702878, -73.98845]).addTo(mymap);
+        marker.bindPopup("MHB-32 Bklyn S URDW @ Anch");
+        
+        var marker = L.marker([40.704206, -73.988704]).addTo(mymap);
+        marker.bindPopup("MHB - 31 - North Upper Rdwy - Bklyn Midspan");
+        
+        var marker = L.marker([40.7100522584289, -73.9630937576294]).addTo(mymap);
+        marker.bindPopup("WBB-20 @ MidSpan Berry St");
+        
+        var marker = L.marker([40.700292, -73.985032]).addTo(mymap);
+        marker.bindPopup("BQE @ Sands St (westbound) - video detection");
+        
+        var marker = L.marker([40.810107, -73.952585]).addTo(mymap);
+        marker.bindPopup("St Nicholas Ave @ 125 St");
+        
+        var marker = L.marker([40.710977, -74.003594]).addTo(mymap);
+        marker.bindPopup("BB - Manhattan hub - 156.103");
+        
+        var marker = L.marker([40.822093, -73.818676]).addTo(mymap);
+        marker.bindPopup("C1-CBX-17-Med_at_E.Tremont_Ave-Ex10");
+        
+        var marker = L.marker([40.75113, -73.94518]).addTo(mymap);
+        marker.bindPopup("East 21 st @ QBB Upper Roadway Exit Ramp");
+        
+        var marker = L.marker([40.6838924508798, -73.9779424667358]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave and 4 Ave");
+        
+        var marker = L.marker([40.7116462, -73.943913]).addTo(mymap);
+        marker.bindPopup("Grand St @ Graham Ave");
+        
+        var marker = L.marker([40.705035, -73.98958]).addTo(mymap);
+        marker.bindPopup("MHB-30 @ BRK S URW @ TWR Walk Way");
+        
+        var marker = L.marker([40.701706, -73.961222]).addTo(mymap);
+        marker.bindPopup("C2-BQE-20-WB_at_Wythe_Ave-Ex31");
+        
+        var marker = L.marker([40.84482, -73.907408]).addTo(mymap);
+        marker.bindPopup("C1-CBE-06_N_NB_at_Weeks Ave-Ext02B");
+        
+        var marker = L.marker([40.75872, -73.98539]).addTo(mymap);
+        marker.bindPopup("Broadway @ 46 St- Quad West");
+        
+        var marker = L.marker([40.524067, -74.186177]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Huguenot Ave");
+        
+        var marker = L.marker([40.711848, -73.859768]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Metropolitan Ave");
+        
+        var marker = L.marker([40.7464005840423, -73.9797313879486]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 34 St");
+        
+        var marker = L.marker([40.740859, -73.899668]).addTo(mymap);
+        marker.bindPopup("Qns Blvd @ 65 PL");
+        
+        var marker = L.marker([40.7547, -73.93678]).addTo(mymap);
+        marker.bindPopup("Crescent st @ 39 Ave");
+        
+        var marker = L.marker([40.62124, -74.168972]).addTo(mymap);
+        marker.bindPopup("Staten Island Expy @ West Shore Expy");
+        
+        var marker = L.marker([40.640648, -73.743377]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Brookville Blvd");
+        
+        var marker = L.marker([40.708881, -73.991336]).addTo(mymap);
+        marker.bindPopup("MHB-21 Manh N URDWY @ Arch");
+        
+        var marker = L.marker([40.662666, -73.988692]).addTo(mymap);
+        marker.bindPopup("C2-PE-06-WB_at_6th_Ave-Ex2");
+        
+        var marker = L.marker([40.752004, -73.931943]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Honeywell Bridge");
+        
+        var marker = L.marker([40.666733, -73.995508]).addTo(mymap);
+        marker.bindPopup("C2-GE-13-EB_at_Prospect_Expy-Ex24");
+        
+        var marker = L.marker([40.7629820055328, -73.9739858644822]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 57 St");
+        
+        var marker = L.marker([40.710705, -73.992304]).addTo(mymap);
+        marker.bindPopup("MHB-19 Manh N URDW @ Anch");
+        
+        var marker = L.marker([40.7415700588724, -73.9895780597063]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 23 St");
+        
+        var marker = L.marker([40.743472, -73.914821]).addTo(mymap);
+        marker.bindPopup("Roosevelt Ave @ 50 St");
+        
+        var marker = L.marker([40.697838, -73.970763]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ Vanderbilt Ave");
+        
+        var marker = L.marker([40.5832573065532, -73.9666557312011]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Ocean Pkwy");
+        
+        var marker = L.marker([40.80896, -73.9483]).addTo(mymap);
+        marker.bindPopup("7 AVE / ADAM CLAYTON POWELL BLVD@ 125 St");
+        
+        var marker = L.marker([40.740368, -73.9345]).addTo(mymap);
+        marker.bindPopup("Van Dam St Bet. 48 Ave & Hunter Pt");
+        
+        var marker = L.marker([40.785302, -73.969353]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 86 St");
+        
+        var marker = L.marker([40.7388335617157, -73.9831563349364]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 23 St");
+        
+        var marker = L.marker([40.771466, -73.877462]).addTo(mymap);
+        marker.bindPopup("GCP @ LGA 94 St Exit");
+        
+        var marker = L.marker([40.7589949664454, -73.9644856628626]).addTo(mymap);
+        marker.bindPopup("E 57 St @ QBB");
+        
+        var marker = L.marker([40.805652, -73.920676]).addTo(mymap);
+        marker.bindPopup("Major Deegan @ Triboro Bridge");
+        
+        var marker = L.marker([40.607945, -74.131892]).addTo(mymap);
+        marker.bindPopup("C3-SIE-08-EB_at_Bradley_Ave-Ex11");
+        
+        var marker = L.marker([40.740069, -73.844951]).addTo(mymap);
+        marker.bindPopup("C5-LIE-17-EB_at_GCP-Ex22A_GCP");
+        
+        var marker = L.marker([40.79421, -73.962857]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 100 St");
+        
+        var marker = L.marker([40.750323, -73.938321]).addTo(mymap);
+        marker.bindPopup("Queens Plaza N @ Northern Blvd");
+        
+        var marker = L.marker([40.548922, -74.220292]).addTo(mymap);
+        marker.bindPopup("West Shore Expy @ Bloomingdale Rd");
+        
+        var marker = L.marker([40.760204, -73.961502]).addTo(mymap);
+        marker.bindPopup("1 Avenue @ East 60 Street");
+        
+        var marker = L.marker([40.759565, -73.830121]).addTo(mymap);
+        marker.bindPopup("Main St @ Roosevelt Ave");
+        
+        var marker = L.marker([40.746808, -73.891632]).addTo(mymap);
+        marker.bindPopup("Roosevelt Ave @ Broadway &  74 st");
+        
+        var marker = L.marker([40.607476, -74.140649]).addTo(mymap);
+        marker.bindPopup("C3-SIE-07-EB_at_Woolley_Ave-Ex10");
+        
+        var marker = L.marker([40.796969, -73.929317]).addTo(mymap);
+        marker.bindPopup("FDR @ 120 St");
+        
+        var marker = L.marker([40.74669647, -73.76365673]).addTo(mymap);
+        marker.bindPopup("C5-LIE-28-EB_at_213th_St-Ex28");
+        
+        var marker = L.marker([40.640525, -74.022404]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 63rd St");
+        
+        var marker = L.marker([40.666941, -73.981419]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 9 St");
+        
+        var marker = L.marker([40.5958, -73.764771]).addTo(mymap);
+        marker.bindPopup("Seagirt Blvd @ B 32 St");
+        
+        var marker = L.marker([40.548607, -74.220828]).addTo(mymap);
+        marker.bindPopup("C3-WSE-03-SB_at_Bloomngdale_Rd-Ex3");
+        
+        var marker = L.marker([40.701208, -73.994466]).addTo(mymap);
+        marker.bindPopup("C2-BQE-14_WB_at_Midgh_St-Ex28A");
+        
+        var marker = L.marker([40.6652749911298, -73.7575721740722]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Springfield Blvd");
+        
+        var marker = L.marker([40.612621, -74.153868]).addTo(mymap);
+        marker.bindPopup("C3-SIE-05-WB_at_MLK-Int-Ex9");
+        
+        var marker = L.marker([40.714394, -73.974648]).addTo(mymap);
+        marker.bindPopup("WBB - 11  NIR-5 @ East of Manhattan Tower");
+        
+        var marker = L.marker([40.7096293581722, -73.9597463607788]).addTo(mymap);
+        marker.bindPopup("WBB-1 @ Bklyn Plaza");
+        
+        var marker = L.marker([40.776331, -73.962123]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ 79 St");
+        
+        var marker = L.marker([40.776225, -73.975974]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 72 St");
+        
+        var marker = L.marker([40.653191, -74.005389]).addTo(mymap);
+        marker.bindPopup("4 Ave @ 38 st - 179.90");
+        
+        var marker = L.marker([40.750627, -73.819113]).addTo(mymap);
+        marker.bindPopup("Kissena Blvd @ Holly Ave");
+        
+        var marker = L.marker([40.770649, -73.735503]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Little Neck Pkwy");
+        
+        var marker = L.marker([40.56032, -74.16981]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Wainwright Ave - quad - ptz - 0.146");
+        
+        var marker = L.marker([40.791667, -73.964697]).addTo(mymap);
+        marker.bindPopup("Central Park West @ 96 St");
+        
+        var marker = L.marker([40.725063, -73.995413]).addTo(mymap);
+        marker.bindPopup("Houston St @ Lafeyette St");
+        
+        var marker = L.marker([40.659656, -73.773968]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Farmers Blvd");
+        
+        var marker = L.marker([40.609864, -73.922379]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Ave U");
+        
+        var marker = L.marker([40.6370209745622, -73.7404337158691]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Division St");
+        
+        var marker = L.marker([40.722319, -73.7768]).addTo(mymap);
+        marker.bindPopup("Grand Central Pkwy @ 188 St");
+        
+        var marker = L.marker([40.71096, -73.951087]).addTo(mymap);
+        marker.bindPopup("Grand St (Borinquen Pl) @ Union Ave");
+        
+        var marker = L.marker([40.834938, -73.894132]).addTo(mymap);
+        marker.bindPopup("Claremont @ Boston Rd.");
+        
+        var marker = L.marker([40.67980655, -74.00432445]).addTo(mymap);
+        marker.bindPopup("C2-GE-14A-WB_at_Cole_St");
+        
+        var marker = L.marker([40.6955094542638, -73.9841222763061]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Tillary St");
+        
+        var marker = L.marker([40.765038, -73.887086]).addTo(mymap);
+        marker.bindPopup("Astoria Blvd @ 82 St");
+        
+        var marker = L.marker([40.7104751559999, -74.0002155303955]).addTo(mymap);
+        marker.bindPopup("Pearl Street @ St. James Pl");
+        
+        var marker = L.marker([40.720317, -73.994016]).addTo(mymap);
+        marker.bindPopup("Delancey St @ Bowery St ");
+        
+        var marker = L.marker([40.74327, -73.95146]).addTo(mymap);
+        marker.bindPopup("Jackson Ave @ 11 ST");
+        
+        var marker = L.marker([40.586632, -74.091912]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Seaview Ave");
+        
+        var marker = L.marker([40.726307, -73.905287]).addTo(mymap);
+        marker.bindPopup("C5-LIE-11-EB_at_60th_St-Ex18");
+        
+        var marker = L.marker([40.7117763624494, -74.0047216415405]).addTo(mymap);
+        marker.bindPopup("Brooklyn Bridge @ Centre Street");
+        
+        var marker = L.marker([40.711408, -74.008688]).addTo(mymap);
+        marker.bindPopup("Broadway @ Vesey St");
+        
+        var marker = L.marker([40.700185, -73.985185]).addTo(mymap);
+        marker.bindPopup("BQE @ Sands St");
+        
+        var marker = L.marker([40.844531, -73.903627]).addTo(mymap);
+        marker.bindPopup("NB Cross Brx Expy-Webster Av Exit ramp @ E 174 St & Cater Av");
+        
+        var marker = L.marker([40.748456, -73.876234]).addTo(mymap);
+        marker.bindPopup("Roosevelt Ave @ Elmhurst Ave");
+        
+        var marker = L.marker([40.7526863291829, -73.9464426040649]).addTo(mymap);
+        marker.bindPopup("QBB LL CM @ 11 St");
+        
+        var marker = L.marker([40.807681, -73.929512]).addTo(mymap);
+        marker.bindPopup("Bruckner Blvd @ Lincoln Ave");
+        
+        var marker = L.marker([40.691928, -73.999892]).addTo(mymap);
+        marker.bindPopup("Furman St @ Atlantic Ave");
+        
+        var marker = L.marker([40.812522, -73.931754]).addTo(mymap);
+        marker.bindPopup("C1-MDE-03-SB_at_E.138th_St-Ex3");
+        
+        var marker = L.marker([40.761978792937, -74.0010637153985]).addTo(mymap);
+        marker.bindPopup("12 Ave @ 42 St");
+        
+        var marker = L.marker([40.721437, -73.983838]).addTo(mymap);
+        marker.bindPopup("East Houston St @ Ave B");
+        
+        var marker = L.marker([40.742587, -73.825432]).addTo(mymap);
+        marker.bindPopup("Main St @ LIE N S/R");
+        
+        var marker = L.marker([40.691006, -73.99784]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Hicks Ave - quad - ptz - 165.202");
+        
+        var marker = L.marker([40.705446, -73.9959166]).addTo(mymap);
+        marker.bindPopup("BB-47 North Rdwy @ West of Bklyn Twr");
+        
+        var marker = L.marker([40.700756, -73.990942]).addTo(mymap);
+        marker.bindPopup("Cadman Plz W @ Prospect St - quad - ptz - 1.2");
+        
+        var marker = L.marker([40.619944, -74.023763]).addTo(mymap);
+        marker.bindPopup("Gatling Pl @ 86 St - 186.2");
+        
+        var marker = L.marker([40.661152, -74.000813]).addTo(mymap);
+        marker.bindPopup("C2-GE-12_W_WB_at_26th St-Ex23");
+        
+        var marker = L.marker([40.753292, -73.906896]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Broadway");
+        
+        var marker = L.marker([40.757774, -73.783335]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Francis Lewis Blvd");
+        
+        var marker = L.marker([40.625312, -74.17785]).addTo(mymap);
+        marker.bindPopup("C3-SIE-01-WB_at_Forest_Ave");
+        
+        var marker = L.marker([40.732333, -73.746767]).addTo(mymap);
+        marker.bindPopup("Grand Central Pkwy @ Springfield Blvd - 0.98");
+        
+        var marker = L.marker([40.749296, -73.896779]).addTo(mymap);
+        marker.bindPopup("C5-BQE-39-WB_at_Broadway-Ex40");
+        
+        var marker = L.marker([40.7099871970258, -73.9930057525634]).addTo(mymap);
+        marker.bindPopup("MHB-20 Mahn S URW @ Anch");
+        
+        var marker = L.marker([40.84337, -73.9444]).addTo(mymap);
+        marker.bindPopup("Riverside Dr @ Washington Br ENT ramp");
+        
+        var marker = L.marker([40.722898, -74.011638]).addTo(mymap);
+        marker.bindPopup("C4-WST-02-NB_at_Vestry_St");
+        
+        var marker = L.marker([40.71369, -73.972344]).addTo(mymap);
+        marker.bindPopup("WBB -12 NIR-12 Manhattan Mid Span");
+        
+        var marker = L.marker([40.715065, -73.913276]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ 54 St");
+        
+        var marker = L.marker([40.7460324, -73.9344491]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ Skillman");
+        
+        var marker = L.marker([40.601206, -74.065126]).addTo(mymap);
+        marker.bindPopup("Narrows Rd South @ Lily Pond Ave");
+        
+        var marker = L.marker([40.761501, -73.960542]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 62 St");
+        
+        var marker = L.marker([40.696002, -73.987094]).addTo(mymap);
+        marker.bindPopup("Tillary St EB @ Jay St");
+        
+        var marker = L.marker([40.759021, -73.959431]).addTo(mymap);
+        marker.bindPopup("QBB LL CM @ York Ave");
+        
+        var marker = L.marker([40.665895, -73.979249]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 9 St");
+        
+        var marker = L.marker([40.755787, -74.00198]).addTo(mymap);
+        marker.bindPopup("11 Ave @ 34 ST");
+        
+        var marker = L.marker([40.845935, -73.931089]).addTo(mymap);
+        marker.bindPopup("C1-CBE-01_N_NB_at_Amsterdam_Ave-Ex-HRD");
+        
+        var marker = L.marker([40.704815, -73.9951]).addTo(mymap);
+        marker.bindPopup("BB-44 North Rdwy @ 350Ft West of Bklyn Twr");
+        
+        var marker = L.marker([40.758744, -73.9855]).addTo(mymap);
+        marker.bindPopup("Broadway @ 46 St");
+        
+        var marker = L.marker([40.626558, -73.970924]).addTo(mymap);
+        marker.bindPopup("Ocean Pkwy @ Ave I");
+        
+        var marker = L.marker([40.665993, -73.78955]).addTo(mymap);
+        marker.bindPopup("S Conduit Ave @ 150 St");
+        
+        var marker = L.marker([40.74759, -73.9708]).addTo(mymap);
+        marker.bindPopup("1 ave @ 40 st");
+        
+        var marker = L.marker([40.827501, -73.924959]).addTo(mymap);
+        marker.bindPopup("Gerard Ave @ E 161 St");
+        
+        var marker = L.marker([40.722749, -73.901592]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ Grand Ave & 64 St");
+        
+        var marker = L.marker([40.857212, -73.868891]).addTo(mymap);
+        marker.bindPopup("Pelham Pkwy W/B @ Boston Rd");
+        
+        var marker = L.marker([40.724536, -73.898416]).addTo(mymap);
+        marker.bindPopup("Grand Ave @ Hamilton Pl");
+        
+        var marker = L.marker([40.601134, -73.913036]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Marine Park");
+        
+        var marker = L.marker([40.699951, -73.996223]).addTo(mymap);
+        marker.bindPopup("C2-BQE-11-WB_at_Furmn_St_UP-Ex28A");
+        
+        var marker = L.marker([40.618503, -74.151462]).addTo(mymap);
+        marker.bindPopup("C3-MLK-01-SB_at_Watchogue_Rd-Ex10");
+        
+        var marker = L.marker([40.714823, -73.976455]).addTo(mymap);
+        marker.bindPopup("WBB-10 NIR-4 @ FDR RD");
+        
+        var marker = L.marker([40.734074, -73.844484]).addTo(mymap);
+        marker.bindPopup("C5-GCP-11_EB_at_64th_Ave-Ex10");
+        
+        var marker = L.marker([40.813323, -73.956265]).addTo(mymap);
+        marker.bindPopup("Amsterdam Ave @ 125 St");
+        
+        var marker = L.marker([40.7029534, -74.016916]).addTo(mymap);
+        marker.bindPopup("2nd Camera North Bound BPU -148.52");
+        
+        var marker = L.marker([40.780167, -73.957114]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 86 St");
+        
+        var marker = L.marker([40.724348, -73.992623]).addTo(mymap);
+        marker.bindPopup("Houston St @ Bowery St");
+        
+        var marker = L.marker([40.745235, -73.9377]).addTo(mymap);
+        marker.bindPopup("QBB UL Entrance @ Thomson Ave");
+        
+        var marker = L.marker([40.7577, -73.9948]).addTo(mymap);
+        marker.bindPopup("Dyer Ave @ W 40 St");
+        
+        var marker = L.marker([40.855126, -73.918007]).addTo(mymap);
+        marker.bindPopup("C1-MDE-11-NB_at_W.179th_St-Ex8");
+        
+        var marker = L.marker([40.721888, -73.903107]).addTo(mymap);
+        marker.bindPopup("Flushing Ave @ Fresh Pond Rd");
+        
+        var marker = L.marker([40.598884, -73.820711]).addTo(mymap);
+        marker.bindPopup("Cross Bay Blvd @ 20 Rd");
+        
+        var marker = L.marker([40.560473, -74.199158]).addTo(mymap);
+        marker.bindPopup("C3-WSE-05-NB_at_Arden_Ave-Ex4");
+        
+        var marker = L.marker([40.610089, -74.105929]).addTo(mymap);
+        marker.bindPopup("C3-SIE-11-EB_at_Renwick_Ave");
+        
+        var marker = L.marker([40.815889, -73.931134]).addTo(mymap);
+        marker.bindPopup("C1-MDE-04-SB_at_Grand_Concrse-Ex3");
+        
+        var marker = L.marker([40.73545, -73.9751]).addTo(mymap);
+        marker.bindPopup("AVE C @ 23 St");
+        
+        var marker = L.marker([40.827977, -73.817743]).addTo(mymap);
+        marker.bindPopup("C1-TNE-02-Med_at_Randall_Ave");
+        
+        var marker = L.marker([40.825097, -73.931354]).addTo(mymap);
+        marker.bindPopup("C1-MDE-05-SB_at_E.153rd_St-Ex4");
+        
+        var marker = L.marker([40.746761, -73.943262]).addTo(mymap);
+        marker.bindPopup("Jackson Ave @ Thomson Ave");
+        
+        var marker = L.marker([40.7864554814967, -73.9539957046508]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ 96 St");
+        
+        var marker = L.marker([40.885972, -73.896784]).addTo(mymap);
+        marker.bindPopup("Major Deegan Expy @Van Cortland Pk S");
+        
+        var marker = L.marker([40.6962, -73.9829]).addTo(mymap);
+        marker.bindPopup("Tillary St @ Gold St");
+        
+        var marker = L.marker([40.77114, -73.963907]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 72 St");
+        
+        var marker = L.marker([40.717241, -73.985538]).addTo(mymap);
+        marker.bindPopup("WBB-6 South Rdwy @ Delancy St and Clinton St");
+        
+        var marker = L.marker([40.718516, -73.735207]).addTo(mymap);
+        marker.bindPopup("Springfield Ave @ Jamaica Ave");
+        
+        var marker = L.marker([40.655767, -74.006388]).addTo(mymap);
+        marker.bindPopup("C2-GE-11_E_EB_at_37th_St_Ex23");
+        
+        var marker = L.marker([40.725456, -73.724261]).addTo(mymap);
+        marker.bindPopup("Cross Island Pkwy @ Braddock Ave ");
+        
+        var marker = L.marker([40.787916, -73.955752]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 96 St");
+        
+        var marker = L.marker([40.704944, -74.017341]).addTo(mymap);
+        marker.bindPopup("West st and Battery place");
+        
+        var marker = L.marker([40.7316, -73.9742]).addTo(mymap);
+        marker.bindPopup("AVE C @ 18 St");
+        
+        var marker = L.marker([40.71676, -73.830245]).addTo(mymap);
+        marker.bindPopup("C5-GCP-14_WB_at_76th_Road-Ex13");
+        
+        var marker = L.marker([40.733275, -73.987279]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 14 St");
+        
+        var marker = L.marker([40.7418271531205, -74.0087985992431]).addTo(mymap);
+        marker.bindPopup("11 Ave/Rt 9A @ 14 St");
+        
+        var marker = L.marker([40.700246, -73.985136]).addTo(mymap);
+        marker.bindPopup("BQE @ Sands St (eastbound) - video detection");
+        
+        var marker = L.marker([40.659056, -73.985216]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 18 St");
+        
+        var marker = L.marker([40.656004, -73.980776]).addTo(mymap);
+        marker.bindPopup("C2-PE-04-Ctr_at_9th_Ave-Ex4");
+        
+        var marker = L.marker([40.753417, -73.97874]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ E 43 St");
+        
+        var marker = L.marker([40.709063, -73.957028]).addTo(mymap);
+        marker.bindPopup("C2-BQE-25-WB_at_S.5th_St-Ex32");
+        
+        var marker = L.marker([40.84154, -73.928612]).addTo(mymap);
+        marker.bindPopup("C1-MDE-09-SB_at_Depot_Pl-Ex7-CBX");
+        
+        var marker = L.marker([40.668766, -73.931145]).addTo(mymap);
+        marker.bindPopup("Eastern Pkwy @ Utica Ave");
+        
+        var marker = L.marker([40.7501505126346, -73.9978981018066]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 30 St");
+        
+        var marker = L.marker([40.759134, -73.959401]).addTo(mymap);
+        marker.bindPopup("QBB NOR @ York Ave");
+        
+        var marker = L.marker([40.721494, -73.974554]).addTo(mymap);
+        marker.bindPopup("FDR @ E 6 St");
+        
+        var marker = L.marker([40.57757, -73.859754]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @B 140 St");
+        
+        var marker = L.marker([40.707138, -73.998502]).addTo(mymap);
+        marker.bindPopup("BB-27A Manhattan Tower South");
+        
+        var marker = L.marker([40.683144, -74.003728]).addTo(mymap);
+        marker.bindPopup("Columbia St @ Carroll St - 168.202");
+        
+        var marker = L.marker([40.733984, -73.988693]).addTo(mymap);
+        marker.bindPopup("Irving Pl @ 14 St");
+        
+        var marker = L.marker([40.744152, -73.926136]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ 39 ST");
+        
+        var marker = L.marker([40.708979, -73.996036]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ Catherine Street");
+        
+        var marker = L.marker([40.718427, -73.99483]).addTo(mymap);
+        marker.bindPopup("Grand St @ Bowery");
+        
+        var marker = L.marker([40.873347, -73.853317]).addTo(mymap);
+        marker.bindPopup("Boston Rd @ Gun hill Rd");
+        
+        var marker = L.marker([40.83028, -73.83688]).addTo(mymap);
+        marker.bindPopup("Hutchhinson River Pkwy @ Bruckner Expy");
+        
+        var marker = L.marker([40.727879, -73.870974]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Dry Harbor Rd");
+        
+        var marker = L.marker([40.60958, -74.14953]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Gannon Ave -131.34");
+        
+        var marker = L.marker([40.707189, -73.998376]).addTo(mymap);
+        marker.bindPopup("BB-29 North East Manhattan Tower");
+        
+        var marker = L.marker([40.712792, -73.954462]).addTo(mymap);
+        marker.bindPopup("C2-BQE-26-Cntr_at_Grand_Ave-Ex32");
+        
+        var marker = L.marker([40.79294, -73.9479]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 106 St");
+        
+        var marker = L.marker([40.607469, -74.141823]).addTo(mymap);
+        marker.bindPopup("C3-SIE-06A-E_at_Crafton_Ave_Ex10");
+        
+        var marker = L.marker([40.70403, -73.994422]).addTo(mymap);
+        marker.bindPopup("BB-54 South East Brooklyn Tower");
+        
+        var marker = L.marker([40.75391, -73.901201]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ 61 St");
+        
+        var marker = L.marker([40.703095, -74.007681]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ Old Slip");
+        
+        var marker = L.marker([40.713701, -73.95327]).addTo(mymap);
+        marker.bindPopup("C2-BQE-27-EB_at_Mtrpolitan_Av-Ex32");
+        
+        var marker = L.marker([40.845346, -73.911976]).addTo(mymap);
+        marker.bindPopup("C1-CBE-05_S_SB_at_Walton_Ave-Ex2A");
+        
+        var marker = L.marker([40.715131, -73.995022]).addTo(mymap);
+        marker.bindPopup("MHB-16A Manh East of Colonnade Entr");
+        
+        var marker = L.marker([40.867065, -73.908921]).addTo(mymap);
+        marker.bindPopup("C1-MDE-12-SB_at_Heath_Ave-Ex9");
+        
+        var marker = L.marker([40.760695, -73.963158]).addTo(mymap);
+        marker.bindPopup("East 60th St @ Queensboro Bridge Exit ");
+        
+        var marker = L.marker([40.544705, -74.18201]).addTo(mymap);
+        marker.bindPopup("Drumgoogle Rd E @ Jefferson Blvd");
+        
+        var marker = L.marker([40.700378, -73.988693]).addTo(mymap);
+        marker.bindPopup("Sands St @ Adams St");
+        
+        var marker = L.marker([40.6332, -74.0057]).addTo(mymap);
+        marker.bindPopup("Fort Hamilton Pkwy @ 60 St");
+        
+        var marker = L.marker([40.6880253424274, -73.9803886413574]).addTo(mymap);
+        marker.bindPopup("Flatbush Ave @ Fulton St");
+        
+        var marker = L.marker([40.680102, -74.003745]).addTo(mymap);
+        marker.bindPopup("Hamilton Ave @ Hicks St");
+        
+        var marker = L.marker([40.622258, -74.021137]).addTo(mymap);
+        marker.bindPopup("Gowanus Expy @ FT. Hamilton Pkwy");
+        
+        var marker = L.marker([40.851659, -73.826704]).addTo(mymap);
+        marker.bindPopup("Bruckner Expy @ Wilkinson Ave");
+        
+        var marker = L.marker([40.7966, -73.9408]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 114 St");
+        
+        var marker = L.marker([40.72289, -73.988622]).addTo(mymap);
+        marker.bindPopup("Allan St (1 Ave) @ Houston St (B)");
+        
+        var marker = L.marker([40.744584, -73.928866]).addTo(mymap);
+        marker.bindPopup("Queens Blvd @ 36 St");
+        
+        var marker = L.marker([40.685735, -74.002365]).addTo(mymap);
+        marker.bindPopup("Columbia St @ Degraw St");
+        
+        var marker = L.marker([40.701565, -73.992009]).addTo(mymap);
+        marker.bindPopup("BB-22 BQE @ Old Fulton St");
+        
+        var marker = L.marker([40.848657, -73.939207]).addTo(mymap);
+        marker.bindPopup("Ft Washington @ 178 St");
+        
+        var marker = L.marker([40.758354, -73.901062]).addTo(mymap);
+        marker.bindPopup("C5-BQE-41-EB_at_31st_Ave-Ex43");
+        
+        var marker = L.marker([40.691514, -73.998809]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ BQE");
+        
+        var marker = L.marker([40.7487485, -73.895909]).addTo(mymap);
+        marker.bindPopup("C5-BQE-38_E_at_Broadway");
+        
+        var marker = L.marker([40.712203, -73.967885]).addTo(mymap);
+        marker.bindPopup("WBB - 16 SOR-4 @ Kent Ave South");
+        
+        var marker = L.marker([40.7786, -73.9816]).addTo(mymap);
+        marker.bindPopup("Amsterdam @ 72 St");
+        
+        var marker = L.marker([40.609893, -74.182035]).addTo(mymap);
+        marker.bindPopup("C3-WSE-11-SB_at_Edwrd_Crry_Ave-Ex9");
+        
+        var marker = L.marker([40.704071, -73.994462]).addTo(mymap);
+        marker.bindPopup("BB-52 South West Brooklyn Tower");
+        
+        var marker = L.marker([40.844926, -73.917694]).addTo(mymap);
+        marker.bindPopup("C1-CBE-04_N - NB_at_Macombs Rd-Ex2A");
+        
+        var marker = L.marker([40.89481, -73.86174]).addTo(mymap);
+        marker.bindPopup("Bronx River Pkwy @ 233 St");
+        
+        var marker = L.marker([40.707228, -73.998439]).addTo(mymap);
+        marker.bindPopup("BB-27 South-West Manhattan Tower");
+        
+        var marker = L.marker([40.689202, -73.999062]).addTo(mymap);
+        marker.bindPopup("C2-BQE-06_WB_at_Congress_St-Ex27");
+        
+        var marker = L.marker([40.675583, -74.00068]).addTo(mymap);
+        marker.bindPopup("Hamilton Ave @ 9 St");
+        
+        var marker = L.marker([40.743982, -73.717583]).addTo(mymap);
+        marker.bindPopup("Union tpke @ Little Neck Pkwy");
+        
+        var marker = L.marker([40.756583, -73.986156]).addTo(mymap);
+        marker.bindPopup("Broadway @ 43 St");
+        
+        var marker = L.marker([40.7488254014022, -73.9698439596283]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 42 St");
+        
+        var marker = L.marker([40.7060356, -73.9966579]).addTo(mymap);
+        marker.bindPopup("BB-39 North Rdwy @ Bridge Midspan");
+        
+        var marker = L.marker([40.676012, -73.818977]).addTo(mymap);
+        marker.bindPopup("Rockaway Blvd @ Lefferts Blvd");
+        
+        var marker = L.marker([40.824074, -73.934464]).addTo(mymap);
+        marker.bindPopup("Harlem River Dr @ 150 St");
+        
+        var marker = L.marker([40.7587, -73.985348]).addTo(mymap);
+        marker.bindPopup("Broadway @ 46 St- Quad East");
+        
+        var marker = L.marker([40.693905, -73.999247]).addTo(mymap);
+        marker.bindPopup("Furman St @ Joralemon St");
+        
+        var marker = L.marker([40.696073, -73.987095]).addTo(mymap);
+        marker.bindPopup("Tillary St @ Jay St");
+        
+        var marker = L.marker([40.708574, -74.000112]).addTo(mymap);
+        marker.bindPopup("BB-15 North Rdwy @ Manhattan Anchorage");
+        
+        var marker = L.marker([40.794668, -73.971788]).addTo(mymap);
+        marker.bindPopup("Broadway @ 96 St");
+        
+        var marker = L.marker([40.6981774995555, -73.9865255355835]).addTo(mymap);
+        marker.bindPopup("MHB-33 Bklyn LRW @ Ex Ramp");
+        
+        var marker = L.marker([40.819367, -73.81055]).addTo(mymap);
+        marker.bindPopup("C1-CBX-18-Med_at_Pennyfield_Av-TNB");
+        
+        var marker = L.marker([40.754297, -73.976936]).addTo(mymap);
+        marker.bindPopup("Vanderbilt Ave @ E 45 St");
+        
+        var marker = L.marker([40.751693, -73.965239]).addTo(mymap);
+        marker.bindPopup("FDR @ 48 St");
+        
+        var marker = L.marker([40.762558, -73.83709]).addTo(mymap);
+        marker.bindPopup("Flushing Bridge");
+        
+        var marker = L.marker([40.719655, -74.001842]).addTo(mymap);
+        marker.bindPopup("Canal St @ Broadway");
+        
+        var marker = L.marker([40.691879, -73.999426]).addTo(mymap);
+        marker.bindPopup("BQE @ Atlantic Ave Exit - westbound");
+        
+        var marker = L.marker([40.733504, -73.987239]).addTo(mymap);
+        marker.bindPopup("3 Ave @ E 14 St");
+        
+        var marker = L.marker([40.707897, -74.000162]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ Brooklyn Bridge Exit SB");
+        
+        var marker = L.marker([40.706050863874, -74.0048503875732]).addTo(mymap);
+        marker.bindPopup("Water St @ John St");
+        
+        var marker = L.marker([40.526252, -74.223358]).addTo(mymap);
+        marker.bindPopup("West shore Expy @ Park & Ride");
+        
+        var marker = L.marker([40.7401886321935, -73.986363377929]).addTo(mymap);
+        marker.bindPopup("Park Ave @ 23 St");
+        
+        var marker = L.marker([40.7702068284977, -73.9868688583374]).addTo(mymap);
+        marker.bindPopup("Amsterdam Ave @ 60 St");
+        
+        var marker = L.marker([40.6652749911298, -73.7404060363769]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Brookville Blvd");
+        
+        var marker = L.marker([40.7150861999536, -73.9925114202795]).addTo(mymap);
+        marker.bindPopup("Canal Street @ Allen Street");
+        
+        var marker = L.marker([40.798238, -73.952408]).addTo(mymap);
+        marker.bindPopup("Malcolm X Blvd/Lenox Ave @ 110 St/CPN");
+        
+        var marker = L.marker([40.7510195668227, -73.9906285955498]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 34 St");
+        
+        var marker = L.marker([40.757138, -73.827106]).addTo(mymap);
+        marker.bindPopup("Kissena Blvd @ Sanford Ave");
+        
+        var marker = L.marker([40.6841, -73.8463]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ 101 Ave");
+        
+        var marker = L.marker([40.762077539856, -73.9836422756604]).addTo(mymap);
+        marker.bindPopup("Broadway @ 51 St");
+        
+        var marker = L.marker([40.758559, -73.971296]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 53 St ");
+        
+        var marker = L.marker([40.70273, -73.8624]).addTo(mymap);
+        marker.bindPopup("Jackie Robinson Pkwy @ Forest Pk Dr");
+        
+        var marker = L.marker([40.836133, -73.934883]).addTo(mymap);
+        marker.bindPopup("Harlem Rvr Dr (FDR) @ 166 St");
+        
+        var marker = L.marker([40.667978, -73.771617]).addTo(mymap);
+        marker.bindPopup("Guy Brewer Blvd @ N Conduit Ave");
+        
+        var marker = L.marker([40.75959, -73.96396]).addTo(mymap);
+        marker.bindPopup("58 St @ QBB UL Approach");
+        
+        var marker = L.marker([40.605347, -73.75518]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @B Mott Ave");
+        
+        var marker = L.marker([40.705248, -73.959172]).addTo(mymap);
+        marker.bindPopup("C2-BQE-22-WB_at_Lee_Ave-Ex31");
+        
+        var marker = L.marker([40.669201, -73.99665]).addTo(mymap);
+        marker.bindPopup("Hamilton Ave @ Hamilton Pl @ 15 St (N SR)");
+        
+        var marker = L.marker([40.77787, -73.9518]).addTo(mymap);
+        marker.bindPopup("2 AVE @ 86 St");
+        
+        var marker = L.marker([40.717485, -73.985361]).addTo(mymap);
+        marker.bindPopup("WBB-6A North Rdwy @ Delancey St & Clinton St");
+        
+        var marker = L.marker([40.7914267751247, -73.9380741119384]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 110 St");
+        
+        var marker = L.marker([40.700815, -73.99039]).addTo(mymap);
+        marker.bindPopup("Prospect St @ Old Fulton St -156.63");
+        
+        var marker = L.marker([40.701936, -73.992574]).addTo(mymap);
+        marker.bindPopup("Old Fulton St @ Vine St/Hicks St - quad - 156.24");
+        
+        var marker = L.marker([40.7760243030083, -73.9493179321289]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 86 St");
+        
+        var marker = L.marker([40.747694, -74.004174]).addTo(mymap);
+        marker.bindPopup("10 Ave @ 23 St");
+        
+        var marker = L.marker([40.7572361824409, -73.9760573417802]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ 49 St");
+        
+        var marker = L.marker([40.6553, -73.9817]).addTo(mymap);
+        marker.bindPopup("McDonald Ave @ 10th Ave / 20th St");
+        
+        var marker = L.marker([40.596706, -73.985239]).addTo(mymap);
+        marker.bindPopup("Stillwell Ave @ 86 St");
+        
+        var marker = L.marker([40.670398, -73.955127]).addTo(mymap);
+        marker.bindPopup("Eastern Pkwy @ Bedford Ave");
+        
+        var marker = L.marker([40.780233, -73.961397]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 84 St");
+        
+        var marker = L.marker([40.785793, -73.951017]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 96 St");
+        
+        var marker = L.marker([40.596501, -73.744193]).addTo(mymap);
+        marker.bindPopup("Seagirt Blvd @ B 9 St");
+        
+        var marker = L.marker([40.666739839829, -73.7709617614746]).addTo(mymap);
+        marker.bindPopup("GR Brewer @ Belt");
+        
+        var marker = L.marker([40.61136, -74.034782]).addTo(mymap);
+        marker.bindPopup("4 Ave @ Shore Rd");
+        
+        var marker = L.marker([40.733978, -73.9888]).addTo(mymap);
+        marker.bindPopup("E 14 St @ Irving Pl/Lexington Av");
+        
+        var marker = L.marker([40.69672937, -73.98037536]).addTo(mymap);
+        marker.bindPopup("Navy St @ Park Ave & Tillary St");
+        
+        var marker = L.marker([40.762967, -73.831958]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Main St");
+        
+        var marker = L.marker([40.665473, -73.992742]).addTo(mymap);
+        marker.bindPopup("4 Ave @ Prospect Ave- 66.138");
+        
+        var marker = L.marker([40.713463, -73.97145]).addTo(mymap);
+        marker.bindPopup("WBB-4 @ NOR Bklyn-Mid Span");
+        
+        var marker = L.marker([40.8133220296218, -73.9406061172485]).addTo(mymap);
+        marker.bindPopup("Lenox Ave @ 135 St");
+        
+        var marker = L.marker([40.661198, -73.770991]).addTo(mymap);
+        marker.bindPopup("Farmers Blvd @ 147 Ave @ 175 St");
+        
+        var marker = L.marker([40.803143, -73.930444]).addTo(mymap);
+        marker.bindPopup("FDR @ E 127 St");
+        
+        var marker = L.marker([40.712439, -73.967805]).addTo(mymap);
+        marker.bindPopup("WBB - NOR - 3 @  Kent Ave North");
+        
+        var marker = L.marker([40.7441114245984, -73.9956503622239]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 23St");
+        
+        var marker = L.marker([40.7429025573452, -73.992797766009]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 23 St");
+        
+        var marker = L.marker([40.758092, -73.834234]).addTo(mymap);
+        marker.bindPopup("College Point Blvd @ Roosevelt Ave");
+        
+        var marker = L.marker([40.716139, -73.996063]).addTo(mymap);
+        marker.bindPopup("MHB-16 Manhattan Colonade Entr");
+        
+        var marker = L.marker([40.67635, -73.908282]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Eastern Pkwy");
+        
+        var marker = L.marker([40.7024957, -74.0157618]).addTo(mymap);
+        marker.bindPopup("3rd Camera North Bound BPU");
+        
+        var marker = L.marker([40.606423, -74.077846]).addTo(mymap);
+        marker.bindPopup("C3-SIE-14-WB_at_Hyland_Blvd_Ex14");
+        
+        var marker = L.marker([40.772841, -73.830771]).addTo(mymap);
+        marker.bindPopup("Whitestone Expy @ 28 Rd N of Linden Pl");
+        
+        var marker = L.marker([40.84148, -73.9455]).addTo(mymap);
+        marker.bindPopup("Henry Hudson pkwy @ Exit 14 ,165 St/ GWB  ramp");
+        
+        var marker = L.marker([40.702524, -73.992283]).addTo(mymap);
+        marker.bindPopup("BB-71 North Rdwy @ Front St  ");
+        
+        var marker = L.marker([40.702461, -73.992372]).addTo(mymap);
+        marker.bindPopup("BB-72 South Rdwy @ Front St");
+        
+        var marker = L.marker([40.715579, -74.003036]).addTo(mymap);
+        marker.bindPopup("Worth Street @ Lafayette Street");
+        
+        var marker = L.marker([40.58174, -73.838443]).addTo(mymap);
+        marker.bindPopup("Beach Channel Dr @ Beach 116 St");
+        
+        var marker = L.marker([40.706699, -74.015881]).addTo(mymap);
+        marker.bindPopup("Rt. 9A @ Morris North - 104.100:80");
+        
+        var marker = L.marker([40.7457272953698, -73.9781169718397]).addTo(mymap);
+        marker.bindPopup("3 AVE @ 34 ST");
+        
+        var marker = L.marker([40.75823, -73.96289]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 57 st");
+        
+        var marker = L.marker([40.7604823513464, -73.983738054794]).addTo(mymap);
+        marker.bindPopup("7 Ave @ 49 St");
+        
+        var marker = L.marker([40.809314, -73.929538]).addTo(mymap);
+        marker.bindPopup("Exterior St @ 3 Ave");
+        
+        var marker = L.marker([40.7348035082712, -73.9746809005737]).addTo(mymap);
+        marker.bindPopup("FDR Dr @ 23 St");
+        
+        var marker = L.marker([40.88608, -73.896686]).addTo(mymap);
+        marker.bindPopup("C1-MDE-13-SB_at_Van_Cortlandt-Ex11");
+        
+        var marker = L.marker([40.7507631595424, -73.9744615986273]).addTo(mymap);
+        marker.bindPopup("3 Ave @ 42 St");
+        
+        var marker = L.marker([40.722951, -73.939997]).addTo(mymap);
+        marker.bindPopup("C2-BQE-29_WB_at_Morgan_Street");
+        
+        var marker = L.marker([40.704173, -73.994281]).addTo(mymap);
+        marker.bindPopup("BB-52A Brooklyn Tower - North Rdwy");
+        
+        var marker = L.marker([40.724006, -73.990992]).addTo(mymap);
+        marker.bindPopup("Houston St @ Christies St");
+        
+        var marker = L.marker([40.75609, -73.9869]).addTo(mymap);
+        marker.bindPopup("7 AVE @ 42 St");
+        
+        var marker = L.marker([40.6884158386124, -73.9902591705322]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Boerum St");
+        
+        var marker = L.marker([40.690718, -73.996235]).addTo(mymap);
+        marker.bindPopup("Atlantic Ave @ Henry St");
+        
+        var marker = L.marker([40.7584, -73.9944]).addTo(mymap);
+        marker.bindPopup("Dyer Ave @ W 41 St");
+        
+        var marker = L.marker([40.737146, -73.930969]).addTo(mymap);
+        marker.bindPopup("Long Island Expy @ Greenpoint Ave");
+        
+        var marker = L.marker([40.658591, -73.890605]).addTo(mymap);
+        marker.bindPopup("Linden Blvd @ Pennsylvania Ave");
+        
+        var marker = L.marker([40.714177, -74.006307]).addTo(mymap);
+        marker.bindPopup("Broadway @ Chambers St");
+        
+        var marker = L.marker([40.55919, -74.171699]).addTo(mymap);
+        marker.bindPopup("Drumgoogle Rd E @ Wainwright Ave");
+        
+        var marker = L.marker([40.710405, -73.958276]).addTo(mymap);
+        marker.bindPopup("Grand St (Borinquen PL) @ South 4 St");
+        
+        var marker = L.marker([40.583287, -74.073717]).addTo(mymap);
+        marker.bindPopup("Father Capodanno Blvd @ 2000 FT N of Seaview Ave");
+        
+        var marker = L.marker([40.756845, -73.873712]).addTo(mymap);
+        marker.bindPopup("Northern Blvd @ Junction Blvd");
+        
+        var marker = L.marker([40.69040529, -74.00011983]).addTo(mymap);
+        marker.bindPopup("Columbia St & BQE ENT and EXIT");
+        
+        var marker = L.marker([40.637748, -74.076018]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Bay St");
+        
+        var marker = L.marker([40.604174, -74.069091]).addTo(mymap);
+        marker.bindPopup("Staten Island Expy @ Fingerboard");
+        
+        var marker = L.marker([40.580181, -73.828916]).addTo(mymap);
+        marker.bindPopup("Shore Front Pkwy @ Beach 108 St");
+        
+        var marker = L.marker([40.585826, -74.168392]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ North Access Rd");
+        
+        var marker = L.marker([40.647697, -73.980373]).addTo(mymap);
+        marker.bindPopup("Ft. Hamilton Pkwy @ McDonald Ave");
+        
+        var marker = L.marker([40.579328, -74.07784]).addTo(mymap);
+        marker.bindPopup("Father Capodanno Blvd @ Seaview Ave");
+        
+        var marker = L.marker([40.827872, -73.912005]).addTo(mymap);
+        marker.bindPopup("Webster Ave @ E 165");
+        
+        var marker = L.marker([40.76215, -73.96203]).addTo(mymap);
+        marker.bindPopup("62 St @ QBB Upper Level exit ramp");
+        
+        var marker = L.marker([40.7557483, -73.9784187]).addTo(mymap);
+        marker.bindPopup("46 St Bet. 5 Ave & Madison Ave");
+        
+        var marker = L.marker([40.770785, -73.978337]).addTo(mymap);
+        marker.bindPopup("Central Park @ 72nd St Post 37");
+        
+        var marker = L.marker([40.54696, -74.18117]).addTo(mymap);
+        marker.bindPopup("Drumgoole Rd W @ Arden Ave - quad - ptz - 141.10");
+        
+        var marker = L.marker([40.60214, -74.18784]).addTo(mymap);
+        marker.bindPopup("West Shore Expy @ South Ave ");
+        
+        var marker = L.marker([40.7558094297322, -73.9864124090652]).addTo(mymap);
+        marker.bindPopup("Broadway @ 42 St");
+        
+        var marker = L.marker([40.848738, -73.932353]).addTo(mymap);
+        marker.bindPopup("Audobon Ave @ W 181 ST");
+        
+        var marker = L.marker([40.542395, -74.145885]).addTo(mymap);
+        marker.bindPopup("Hylan Blvd @ Nelson Ave");
+        
+        var marker = L.marker([40.635735, -74.083777]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Jersey St");
+        
+        var marker = L.marker([40.84652, -73.932073]).addTo(mymap);
+        marker.bindPopup("Amsterdam Ave @ W 180 st ");
+        
+        var marker = L.marker([40.84693, -73.83666]).addTo(mymap);
+        marker.bindPopup("Hutchhinson River Pkwy @ Westchester Ave");
+        
+        var marker = L.marker([40.584105, -73.986885]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Cropsey Ave - quad - 2.3");
+        
+        var marker = L.marker([40.7477755134971, -73.9829511142234]).addTo(mymap);
+        marker.bindPopup("MADISON @ 34 ST");
+        
+        var marker = L.marker([40.707376, -73.998188]).addTo(mymap);
+        marker.bindPopup("BB-30 South East Manhattan Tower");
+        
+        var marker = L.marker([40.637939, -74.144797]).addTo(mymap);
+        marker.bindPopup("Morningstar Rd @ Richmond Terr.");
+        
+        var marker = L.marker([40.536195, -74.180516]).addTo(mymap);
+        marker.bindPopup("Amboy Rd @ Annadale Rd");
+        
+        var marker = L.marker([40.642516876713, -73.8758897781372]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Pennsylvania Ave");
+        
+        var marker = L.marker([40.754739, -73.96219]).addTo(mymap);
+        marker.bindPopup("FDR @ E 53 St");
+        
+        var marker = L.marker([40.705361, -73.996088]).addTo(mymap);
+        marker.bindPopup("BB-50 South Rdwy @ West of Bklyn Twr");
+        
+        var marker = L.marker([40.769839, -73.916794]).addTo(mymap);
+        marker.bindPopup("Astoria Blvd S S/R @ 33 St");
+        
+        var marker = L.marker([40.734346, -73.937978]).addTo(mymap);
+        marker.bindPopup("Van Dam St @ Review Ave @ Greenpoint Ave Br");
+        
+        var marker = L.marker([40.756036, -73.979014]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 46 St");
+        
+        var marker = L.marker([40.7534082474864, -73.9963142012874]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 34 St");
+        
+        var marker = L.marker([40.7498083287543, -73.9877461877174]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 34 St");
+        
+        var marker = L.marker([40.754, -73.9976]).addTo(mymap);
+        marker.bindPopup("Dyer Ave @ W 34 St");
+        
+        var marker = L.marker([40.60841, -74.15539]).addTo(mymap);
+        marker.bindPopup("Victory Blvd @ Christopher/Lamberts La - quad - ptz -131.3");
+        
+        var marker = L.marker([40.8358919160327, -73.9487171173095]).addTo(mymap);
+        marker.bindPopup("Henry Hudson @ 158 St");
+        
+        var marker = L.marker([40.754259690691, -73.9689914123326]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 49 St");
+        
+        var marker = L.marker([40.720319, -74.012171]).addTo(mymap);
+        marker.bindPopup("RT. 9A @ N. Moore St");
+        
+        var marker = L.marker([40.729832, -74.010658]).addTo(mymap);
+        marker.bindPopup("West St @ Clarkson");
+        
+        var marker = L.marker([40.7548488195947, -73.9841249380499]).addTo(mymap);
+        marker.bindPopup("6 Ave @ 42 St");
+        
+        var marker = L.marker([40.595641, -73.907647]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Flatbush");
+        
+        var marker = L.marker([40.767996704675, -73.9582872390747]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 72 St");
+        
+        var marker = L.marker([40.684818, -73.910158]).addTo(mymap);
+        marker.bindPopup("Bushwick Ave @ Cooper St");
+        
+        var marker = L.marker([40.71303, -74.014039]).addTo(mymap);
+        marker.bindPopup("West st and Fulton");
+        
+        var marker = L.marker([40.756725, -73.97883]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 47 St");
+        
+        var marker = L.marker([40.714059, -73.951635]).addTo(mymap);
+        marker.bindPopup("Metropolitan Ave @ Union Ave");
+        
+        var marker = L.marker([40.7477121362911, -74.0078973770141]).addTo(mymap);
+        marker.bindPopup("12 Ave @ 22 St");
+        
+        var marker = L.marker([40.7552720843545, -73.9948547204017]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 37 St");
+        
+        var marker = L.marker([40.773298, -73.955022]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 79 St");
+        
+        var marker = L.marker([40.674443, -73.975468]).addTo(mymap);
+        marker.bindPopup("7 Ave @ Union St");
+        
+        var marker = L.marker([40.7572405048358, -73.9897804546602]).addTo(mymap);
+        marker.bindPopup("8 Ave @ 42 St");
+        
+        var marker = L.marker([40.584105, -73.986885]).addTo(mymap);
+        marker.bindPopup("Belt Pkwy @ Cropsey Ave");
+        
+        var marker = L.marker([40.7715319506809, -73.9942101957323]).addTo(mymap);
+        marker.bindPopup("12 Ave @ 57 St");
+        
+        var marker = L.marker([40.763103, -73.999643]).addTo(mymap);
+        marker.bindPopup("West Street @ Intrepid");
+        
+        var marker = L.marker([40.678345, -73.985427]).addTo(mymap);
+        marker.bindPopup("3 Ave @ Union St");
+        
+        var marker = L.marker([40.680171, -73.844597]).addTo(mymap);
+        marker.bindPopup("Woodhaven Blvd @ Liberty Ave");
+        
+        var marker = L.marker([40.7279742537155, -73.8576507568359]).addTo(mymap);
+        marker.bindPopup("Qns Blvd @ 65 Ave");
+        
+        var marker = L.marker([40.632085, -73.918599]).addTo(mymap);
+        marker.bindPopup("Flatlands Ave @ Ralph Ave");
+        
+        var marker = L.marker([40.699972, -73.986858]).addTo(mymap);
+        marker.bindPopup("Sands St @ Jay St - quad - ptz - 149.26");
+        
+        var marker = L.marker([40.7514494972593, -73.976060779701]).addTo(mymap);
+        marker.bindPopup("Lexington Ave @ 42 St");
+        
+        var marker = L.marker([40.759663, -73.995317]).addTo(mymap);
+        marker.bindPopup("10 Ave @ 42 St");
+        
+        var marker = L.marker([40.7584430039686, -73.9926394975013]).addTo(mymap);
+        marker.bindPopup("9 Ave @ 42 St");
+        
+        var marker = L.marker([40.717179, -74.012897]).addTo(mymap);
+        marker.bindPopup("West st and Chambers");
+        
+        var marker = L.marker([40.7250797391189, -74.0104722976684]).addTo(mymap);
+        marker.bindPopup("West St @ Canal St");
+        
+        var marker = L.marker([40.715249, -74.013364]).addTo(mymap);
+        marker.bindPopup("West St @ Murray");
+        
+        var marker = L.marker([40.856678, -73.836682]).addTo(mymap);
+        marker.bindPopup("Pelham Pkwy @ Stillwell Ave");
+        
+        var marker = L.marker([40.768025, -73.970282]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 65 St");
+        
+        var marker = L.marker([40.729104, -74.010528]).addTo(mymap);
+        marker.bindPopup("West St @ West Houston St");
+        
+        var marker = L.marker([40.70769, -74.01565]).addTo(mymap);
+        marker.bindPopup("West st and West Thames (Battery tunnel)");
+        
+        var marker = L.marker([40.642219, -74.075142]).addTo(mymap);
+        marker.bindPopup("Bay St @ Richmond Terr.");
+        
+        var marker = L.marker([40.54332, -74.16428]).addTo(mymap);
+        marker.bindPopup("Richmond Ave @ Amboy Rd - quad - ptz - 1.218");
+        
+        var marker = L.marker([40.760978, -73.964082]).addTo(mymap);
+        marker.bindPopup("2 Ave @ 59 St (QBB)");
+        
+        var marker = L.marker([40.7528121596316, -73.9792838595713]).addTo(mymap);
+        marker.bindPopup("Madison Ave @ 42 St");
+        
+        var marker = L.marker([40.7534920464028, -73.9808970054167]).addTo(mymap);
+        marker.bindPopup("5 Ave @ 42 St");
+        
+        var marker = L.marker([40.7607911152618, -73.9982590769288]).addTo(mymap);
+        marker.bindPopup("11 Ave @ 42 St");
+        
+        var marker = L.marker([40.723043, -73.988592]).addTo(mymap);
+        marker.bindPopup("1 Ave @ E. Houston St");
+        
+        var marker = L.marker([40.706371, -73.792539]).addTo(mymap);
+        marker.bindPopup("Jamaica Ave @ 168 St");
+        
+        var marker = L.marker([40.759687, -73.96201]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 59 St");
+        
+        var marker = L.marker([40.7368873405677, -73.9785319648825]).addTo(mymap);
+        marker.bindPopup("1 Ave @ 23 St");
+        
+        </script>
+    </body>
+    </html>
+    

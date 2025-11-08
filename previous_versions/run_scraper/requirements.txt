@@ -1,0 +1,7 @@
+requests
+google-cloud-storage
+Pillow
+imagehash
+flask
+gunicorn
+pytz

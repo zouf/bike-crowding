@@ -1,6 +1,0 @@
-pandas
-Flask
-gunicorn
-google-cloud
-google-cloud-core
-google-cloud-storage

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikes in Central Park</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script>
+        // Define bike data
+        var bikeData = {{ data | tojson }};
+
+        window.onload = function () {
+            // Load the bike.js script
+            const script = document.createElement("script");
+            script.src = "bike.js";
+            document.head.appendChild(script);
+        };
+    </script>
+    <style>
+        #timeSeriesChart figcaption {
+          font-size: 14px;
+          font-style: italic;
+          text-align: center;
+          padding: 10px;
+          margin-top: 0;
+        }
+      </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <h2>Bikes in Central Park</h2>
+                <p class="lead">This page visualizes the number of bikes counted in Central Park throughout the day. The data is updated regularly and provides insights into cyclist activity and park usage.</p>
+            </div>
+        </div>
+
+       
+
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Smoothing</td>
+                            <td>{{smoothing_minutes}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date Range</td>
+                            <td>{{date_range_min}} - {{date_range_max}}</td>
+                        </tr>
+                        <tr>
+                            <td>Current Count</td>
+                            <td>{{latest_count}}</td>
+                        </tr>
+                        <tr>
+                            <td>Peak Hour</td>
+                            <td>{{peak_time}}</td>
+                        </tr>
+                        <tr>
+                            <td>Peak Count</td>
+                            <td>{{max_count}}</td>
+                        </tr>
+                        <tr>
+                            <td>Average Count</td>
+                            <td>{{avg_count}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <form action="/" method="get">
+                    <label for="window_size">Window Size (days):</label>
+                    <input type="number" id="window_size" name="window_size" value="{{ window_size }}">
+                </div>
+            <div class="col-md-6">
+                <label for="smoothing_minutes">Smoothing (minutes):</label>
+                <input type="number" id="window_size" name="window_size" value="{{ window_size }}">
+                <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="timeSeriesChart"></div>
+                        <figcaption>Hover over a point for more information.</figcaption>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- 'img-div' div with the image inside -->
+            <div id="img-div">
+                <img src="{{img_url}}" alt="Snapshot">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+</body>
+</html>
