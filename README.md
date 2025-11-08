@@ -1,6 +1,6 @@
 # Bike Crowding
 
-This project collects and analyzes bike traffic data from NYC webcams. It consists of a Google Cloud Function that scrapes images from NYC webcams.
+This project collects bike traffic data from NYC webcams. It consists of a Google Cloud Function that scrapes images from NYC webcams.
 
 ## Getting Started
 
@@ -23,88 +23,28 @@ This project collects and analyzes bike traffic data from NYC webcams. It consis
     source venv/bin/activate
     ```
 
-3.  **Install the dependencies for the collect service:**
+3.  **Install the dependencies for the scraper service:**
     ```bash
-    pip install -r collect/requirements.txt
+    pip install -r single-scraper/requirements.txt
     ```
 
 ## Services
 
-### Collect Service
+### Webcam Scraper Service
 
-The `collect` service is a Google Cloud Function that scrapes images from the NYC DOT traffic cameras. It is triggered by Pub/Sub messages from two different Cloud Scheduler jobs:
-
--   **Hourly Trigger:** Scrapes all cameras every hour.
--   **Minute Trigger:** Scrapes the `Central_Park___72nd_St_Post_37` camera every minute.
+The `webcam-scraper-v2` service is a Google Cloud Function that scrapes images from the NYC DOT traffic cameras. It is triggered by HTTP requests.
 
 The service performs the following steps:
 
 1.  Fetches the list of all cameras from the NYC TMC API.
 2.  For each camera, it downloads the current image.
 3.  Compresses the image to save storage space.
-4.  Calculates a perceptual hash of the image to detect and avoid storing duplicate images.
-5.  Saves the image to a Google Cloud Storage bucket.
-6.  Logs metadata about the scraping process to a CSV file in the same bucket.
-
-#### Triggers
-
-The function is triggered by two Cloud Scheduler jobs that publish messages to two different Pub/Sub topics.
-
-**1. Hourly Trigger:**
-
--   **Pub/Sub Topic:** `hourly-trigger`
--   **Cloud Scheduler Job:** Runs every hour and sends an empty message.
-
-**2. Minute Trigger:**
-
--   **Pub/Sub Topic:** `minute-trigger`
--   **Cloud Scheduler Job:** Runs every minute and sends a message with the following body:
-    ```json
-    {"camera_name": "Central_Park___72nd_St_Post_37"}
-    ```
-
-To create these triggers, you can use the following `gcloud` commands:
-
-```bash
-# Hourly Trigger
-gcloud pubsub topics create hourly-trigger
-gcloud scheduler jobs create pubsub hourly-trigger-job --schedule "0 * * * *" --topic hourly-trigger --message-body "Go" --location us-east1
-
-# Minute Trigger
-gcloud pubsub topics create minute-trigger
-gcloud scheduler jobs create pubsub minute-trigger-job --schedule "* * * * *" --topic minute-trigger --message-body '{"camera_name": "Central_Park___72nd_St_Post_37"}' --location us-east1
-```
-
-#### Local Development
-
-To run the `collect` service locally for testing, follow these steps:
-
-1.  **Navigate to the `collect` directory:**
-    ```bash
-    cd collect
-    ```
-
-2.  **Activate the virtual environment:**
-    ```bash
-    source venv/bin/activate
-    ```
-
-3.  **Install the dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Run the script:**
-    The `if __name__ == "__main__":` block at the end of the `collect/main.py` file is configured to run the script locally. It will scrape all cameras and save the images to a local `downloaded_images` directory.
-    ```bash
-    python main.py
-    ```
-    You can also run the script with a specific number of threads by modifying the `max_workers` argument in the `process_all_cameras` function call within the `if __name__ == "__main__":` block.
+4.  Saves the image to a Google Cloud Storage bucket.
 
 #### Deployment
 
-To deploy the `collect` service to Google Cloud with both triggers, run the following command:
+To deploy the `webcam-scraper-v2` service to Google Cloud, run the following command:
 
 ```bash
-sh deploy.sh
+gcloud functions deploy webcam-scraper-v2 --source=single-scraper --runtime=python312 --trigger-http --entry-point=scrape_all_cameras --region=us-east1
 ```
