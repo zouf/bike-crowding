@@ -8,6 +8,16 @@ This Cloud Function scrapes images from NYC Traffic Management Center webcams an
   - *Note: This was previously referred to as 'bike-crowding' in some contexts, but the correct GCS bucket name is `nyc-webcam-capture`.*
 - **Timezone**: America/New_York
 
+## Deployment Configuration
+
+For the scraper to run successfully (processing ~1000 cameras), the Cloud Function requires specific resource allocations:
+
+- **Timeout**: `540s` (9 minutes) - Increased from default 60s to handle the volume.
+- **Memory**: `1024MB` (1GB) - Provides necessary CPU power.
+- **Concurrency**: `max_workers=8` - Tuned to balance speed vs. server load (prevents DOS).
+
+*See `deploy.sh` for the exact `gcloud` command.*
+
 ## Data Structure
 
 Images are stored using the following hierarchy:
