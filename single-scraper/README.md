@@ -45,6 +45,21 @@ The scraper maintains a cumulative daily index of file paths to facilitate effic
   }
   ```
 - **Updates**: The script *appends* newly scraped files to the current day's index file on every run.
+
+## Web App Integration
+
+For applications visualizing or searching this data:
+
+1.  **Do NOT list buckets**: Listing the `data/` directory is slow and expensive.
+2.  **Use the Index**: The daily index is self-sufficient. Run your app by fetching `gs://nyc-webcam-capture/metadata/daily_index/{YYYY-MM-DD}.json` directly.
+3.  **Search**: Parse the `files` array in the JSON index. It contains sorted paths to all images scraped that day.
+    - *Example*: To find "Central Park", filter the `files` list for the camera name substring.
+
+## Known Limitations
+
+- **Camera Count**: The NYCTMC API currently limits responses to **1024 unique cameras**. Pagination parameters are ignored by the API. As a result, the scraper only captures this specific subset of cameras.
+- **Monitoring**: Logs now emit a summary line `Scraping summary: Total=..., Success=..., Failed=..., Duration=...` at the end of each run. Use this for health checks.
+
 ## Development
 
 ### Environment Notes
