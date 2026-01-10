@@ -102,6 +102,9 @@ def scrape_all_cameras(event, context):
         # Add Central Park camera if it's not already in the list
         if not any(c['id'] == central_park_camera['id'] for c in cameras_to_scrape):
             cameras_to_scrape.append(central_park_camera)
+        
+
+
         logger.info(f"Will attempt to scrape {len(cameras_to_scrape)} cameras.")
 
         storage_client = storage.Client()
@@ -111,7 +114,9 @@ def scrape_all_cameras(event, context):
         scraped_files = []
         scraped_count = 0
         total_cameras = len(cameras_to_scrape)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor: # Reduced to 4
+        # Increased workers to 8 (conservative) to avoid DOSing the server while maintaining reasonable speed. 
+        # With 540s timeout, this should be sufficient.
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor: 
             future_to_camera = {executor.submit(download_and_process_camera, camera, bucket): camera for camera in cameras_to_scrape}
             for future in concurrent.futures.as_completed(future_to_camera):
                 result = future.result()
