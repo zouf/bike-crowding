@@ -12,6 +12,7 @@ import base64
 import concurrent.futures
 import time
 import warnings
+from google.cloud import exceptions as cloud_exceptions
 
 # Suppress the specific Google Cloud SDK warning
 warnings.filterwarnings("ignore", "Your application has authenticated using end user credentials from Google Cloud SDK")
@@ -124,38 +125,69 @@ def scrape_all_cameras(event, context):
                     logger.warning(f"Failed to scrape a camera: {camera_name}")
         
         logger.info("Overall scraping process complete.")
-        create_file_index_gcs(BUCKET_NAME, scraped_files) # Call the new function with scraped_files
+        update_daily_index(BUCKET_NAME, scraped_files) 
         return "Scraping complete.", 200
 
     except requests.exceptions.RequestException as e:
         logger.error(f"Fatal error fetching camera list: {e}")
         return "Error: " + str(e), 500
 
-def create_file_index_gcs(bucket_name, scraped_files):
+def update_daily_index(bucket_name, scraped_files):
     """
-    Builds an index of newly scraped files in the GCS bucket and saves it as a JSON object.
+    Appends newly scraped files to a daily index file in GCS.
+    File path: metadata/daily_index/YYYY-MM-DD.json
     """
+    if not scraped_files:
+        logger.info("No files scraped to index.")
+        return
+
     try:
-        logger.info("Starting to build file index in GCS from newly scraped files.")
         storage_client = storage.Client()
         bucket = storage_client.bucket(bucket_name)
-
-        # Sort files for consistency
-        scraped_files.sort()
         
-        index = {
-            'files': scraped_files,
-            'total_files': len(scraped_files),
-            'last_updated': datetime.now(pytz.timezone('America/New_York')).isoformat()
-        }
+        ny_tz = pytz.timezone('America/New_York')
+        today = datetime.now(ny_tz).strftime('%Y-%m-%d')
+        index_file_path = f"metadata/daily_index/{today}.json"
+        
+        blob = bucket.blob(index_file_path)
+        
+        current_index = {'files': [], 'date': today}
+        
+        if blob.exists():
+            try:
+                content = blob.download_as_text()
+                current_index = json.loads(content)
+            except json.JSONDecodeError as e:
+                logger.error(f"Corrupted JSON in index file {index_file_path}: {e}. Aborting update to prevent data loss.")
+                return 
+            except cloud_exceptions.GoogleCloudError as e:
+                logger.error(f"GCS error reading index file {index_file_path}: {e}. Aborting update.")
+                return
+            except Exception as e:
+                logger.error(f"Unexpected error reading index file {index_file_path}: {e}. Aborting update.")
+                return
+        
+        # Append new files
+        # Convert to set for deduping if necessary, though list append is requested. 
+        # Using set to avoid duplicates if re-run locally or overlapping runs.
+        existing_files = set(current_index.get('files', []))
+        new_unique_files = [f for f in scraped_files if f not in existing_files]
+        
+        if new_unique_files:
+            current_index['files'].extend(new_unique_files)
+            current_index['files'].sort() # Keep sorted
+            current_index['last_updated'] = datetime.now(ny_tz).isoformat()
+            
+            blob.upload_from_string(json.dumps(current_index, indent=2), 'application/json')
+            logger.info(f"Updated daily index at gs://{bucket_name}/{index_file_path}. Added {len(new_unique_files)} new files.")
+        else:
+            logger.info(f"No new files to add to index at gs://{bucket_name}/{index_file_path}.")
 
-        index_blob = bucket.blob('metadata/file_index.json')
-        index_blob.upload_from_string(json.dumps(index, indent=2), 'application/json')
-
-        logger.info(f"Successfully created a new index at gs://{bucket_name}/metadata/file_index.json with {len(scraped_files)} files from current scrape.")
-
-    except (storage.exceptions.GoogleCloudError, json.JSONDecodeError) as e:
-        logger.error(f"Error creating file index in GCS: {e}")
+    except Exception as e:
+        logger.error(f"Error updating daily file index in GCS: {e}")
+        # In a real production system, you might want to raise here or send an alert
+        # so this failure isn't silent.
+        raise
 
 if __name__ == "__main__":
     # This is for local testing.
