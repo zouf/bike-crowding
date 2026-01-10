@@ -21,6 +21,8 @@ gs://nyc-webcam-capture/data/{Camera_Name}/{Year}/{Month}/{Day}/{Hour}/{Timestam
 The scraper maintains a cumulative daily index of file paths to facilitate efficient retrieval without listing thousands of blobs.
 
 - **Index Path**: `gs://nyc-webcam-capture/metadata/daily_index/YYYY-MM-DD.json`
+  - To find the **latest** index, look for the file corresponding to the current date (e.g., `2026-01-10.json`).
+  - *Note: The legacy `metadata/file_index.json` is no longer updated.*
 - **Format**:
   ```json
   {
