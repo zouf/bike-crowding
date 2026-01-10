@@ -85,6 +85,7 @@ def scrape_all_cameras(event, context):
     Cloud Function that scrapes a list of cameras.
     """
     try:
+        start_time = time.time()
         logger.info(f"Function started. Message ID: {context.event_id}")
 
         # Fetch all cameras
@@ -129,6 +130,13 @@ def scrape_all_cameras(event, context):
                     camera_name = future_to_camera[future]['name']
                     logger.warning(f"Failed to scrape a camera: {camera_name}")
         
+        
+        end_time = time.time()
+        duration = end_time - start_time
+        success_count = len(scraped_files)
+        failure_count = total_cameras - success_count
+        
+        logger.info(f"Scraping summary: Total={total_cameras}, Success={success_count}, Failed={failure_count}, Duration={duration:.2f}s")
         logger.info("Overall scraping process complete.")
         update_daily_index(BUCKET_NAME, scraped_files) 
         return "Scraping complete.", 200
